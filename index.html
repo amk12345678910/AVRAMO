@@ -10,7 +10,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Space+Grotesk:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@1,400;1,600;1,700&family=Space+Grotesk:ital,wght@1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -23,14 +23,12 @@
             obsidian: '#08090D',
             carbon: '#11131A',
             surface: '#171A24',
-            surfaceHover: '#1E2230',
-            gold: '#D4AF37',
-            goldHover: '#E5C04B',
+            surfaceHover: '#202433',
           },
           fontFamily: {
             serifItalic: ['"Playfair Display"', 'serif'],
-            sans: ['"Inter"', 'sans-serif'],
-            mono: ['"Space Grotesk"', 'monospace'],
+            sansItalic: ['"Inter"', 'sans-serif'],
+            monoItalic: ['"Space Grotesk"', 'monospace'],
           }
         }
       }
@@ -40,35 +38,31 @@
   <style>
     body { 
       background-color: #08090D; 
-      color: #E2E8F0; 
-      font-family: 'Inter', sans-serif; 
+      color: #FFFFFF; 
+      font-family: 'Inter', sans-serif;
+      font-style: italic;
     }
-    .font-italic-headline { 
+    .font-headline { 
       font-family: 'Playfair Display', serif; 
       font-style: italic; 
     }
-    .gold-gradient-text {
-      background: linear-gradient(135deg, #FFF6D6 0%, #D4AF37 55%, #A6801C 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
     .card-border {
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.25s ease;
     }
     .card-border:hover {
-      border-color: rgba(212, 175, 55, 0.45);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.9), 0 0 20px -5px rgba(212, 175, 55, 0.12);
+      border-color: rgba(255, 255, 255, 0.35);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.9);
     }
   </style>
 </head>
-<body class="bg-obsidian text-slate-200 antialiased selection:bg-gold/30 selection:text-white">
+<body class="bg-obsidian text-white antialiased italic">
 
-  <header class="fixed top-0 left-0 right-0 z-40 bg-obsidian/90 backdrop-blur-md border-b border-white/5">
+  <header class="fixed top-0 left-0 right-0 z-40 bg-obsidian/95 backdrop-blur-md border-b border-white/10">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       
       <a href="#" class="flex items-center gap-3.5 group" aria-label="AVRAMO Home">
-        <div class="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center bg-carbon overflow-hidden shrink-0 group-hover:border-gold transition-colors shadow-[0_0_10px_rgba(212,175,55,0.15)]">
+        <div class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-carbon overflow-hidden shrink-0 group-hover:border-white transition-colors">
           <img 
             src="https://unavatar.io/youtube/AVRAMO613" 
             alt="AVRAMO Logo" 
@@ -78,14 +72,14 @@
         </div>
 
         <div class="flex flex-col">
-          <span class="font-italic-headline text-2xl font-bold tracking-wider text-white group-hover:text-gold transition-colors">AVRAMO</span>
-          <span class="font-mono text-[9px] uppercase tracking-widest text-gold/80 -mt-1 italic">Horological Archive</span>
+          <span class="font-headline text-2xl font-bold tracking-wider text-white">AVRAMO</span>
+          <span class="font-monoItalic text-[9px] uppercase tracking-widest text-white/80 -mt-1 italic">Horological Archive</span>
         </div>
       </a>
 
-      <a href="#submit-idea" class="text-xs font-mono italic text-slate-400 hover:text-gold transition-colors flex items-center gap-1.5 focus:outline-none focus:text-gold">
+      <a href="#submit-idea" class="text-xs font-monoItalic italic text-white/80 hover:text-white transition-colors flex items-center gap-1.5 focus:outline-none">
         <span>Suggest Watch</span>
-        <i data-lucide="arrow-down-right" class="w-3.5 h-3.5"></i>
+        <i data-lucide="arrow-down-right" class="w-3.5 h-3.5 text-white"></i>
       </a>
     </div>
   </header>
@@ -94,12 +88,12 @@
     
     <div>
       <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
-        <h1 class="font-italic-headline text-4xl sm:text-5xl font-bold text-white leading-tight">
+        <h1 class="font-headline text-4xl sm:text-5xl font-bold text-white leading-tight italic">
           The Watch Index. <br />
-          <span class="gold-gradient-text">Pure Video & Caliber Specs.</span>
+          <span class="text-white/90">Pure Video & Caliber Specs.</span>
         </h1>
-        <p class="text-slate-400 text-sm font-light italic max-w-md mx-auto">
-          Distraction-free analysis. Select any timepiece below for full 9:16 playback, factory dimensions, and the official manufacture page.
+        <p class="text-white/70 text-sm italic max-w-md mx-auto">
+          Distraction-free horological index. Select any timepiece below for full 9:16 playback, verified specs, and direct product links.
         </p>
       </div>
 
@@ -109,95 +103,93 @@
 
     <section id="submit-idea" class="max-w-3xl mx-auto scroll-mt-28">
       <div class="rounded-2xl bg-carbon card-border p-8 sm:p-12 space-y-8 relative overflow-hidden">
-        
-        <div class="absolute -top-12 -right-12 w-44 h-44 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="space-y-3 text-center sm:text-left">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gold/30 bg-surface">
-            <i data-lucide="sparkles" class="w-3 h-3 text-gold"></i>
-            <span class="font-mono text-[10px] uppercase tracking-widest text-gold italic">Next Project Pipeline</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 bg-surface">
+            <i data-lucide="sparkles" class="w-3 h-3 text-white"></i>
+            <span class="font-monoItalic text-[10px] uppercase tracking-widest text-white italic">Next Project Pipeline</span>
           </div>
-          <h2 class="font-italic-headline text-3xl sm:text-4xl font-bold text-white">
-            Suggest an <span class="gold-gradient-text">Anomalous Timepiece</span>.
+          <h2 class="font-headline text-3xl sm:text-4xl font-bold text-white italic">
+            Suggest a Unique Timepiece.
           </h2>
-          <p class="text-slate-400 text-xs sm:text-sm font-light italic leading-relaxed">
-            Know of a watch with an unusual mechanical complication, rare automaton gear train, or eccentric architecture? Submit the piece for an upcoming breakdown short.
+          <p class="text-white/70 text-xs sm:text-sm italic leading-relaxed">
+            Know of a watch with an unusual mechanical complication, rare automaton gear train, or eccentric architecture? Submit the piece for an upcoming short.
           </p>
         </div>
 
         <form id="ideaForm" onsubmit="handleIdeaSubmit(event)" class="space-y-4">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="space-y-1.5">
-              <label for="submitterEmail" class="block text-[11px] font-mono uppercase tracking-wider text-slate-400 italic">
-                Your Email Address <span class="text-gold">*</span>
+              <label for="submitterEmail" class="block text-[11px] font-monoItalic uppercase tracking-wider text-white italic">
+                Your Email Address *
               </label>
               <input 
                 type="email" 
                 id="submitterEmail" 
                 required 
                 placeholder="collector@domain.com" 
-                class="w-full px-4 py-3 rounded-xl bg-surface border border-white/5 text-white text-xs font-mono focus:border-gold focus:outline-none transition-colors"
+                class="w-full px-4 py-3 rounded-xl bg-surface border border-white/10 text-white text-xs font-monoItalic italic focus:border-white focus:outline-none transition-colors"
               />
             </div>
 
             <div class="space-y-1.5">
-              <label for="watchName" class="block text-[11px] font-mono uppercase tracking-wider text-slate-400 italic">
-                Watch Manufacture & Model <span class="text-gold">*</span>
+              <label for="watchName" class="block text-[11px] font-monoItalic uppercase tracking-wider text-white italic">
+                Watch Manufacture & Model *
               </label>
               <input 
                 type="text" 
                 id="watchName" 
                 required 
                 placeholder="e.g. Ludovic Ballouard Upside Down" 
-                class="w-full px-4 py-3 rounded-xl bg-surface border border-white/5 text-white text-xs font-mono focus:border-gold focus:outline-none transition-colors"
+                class="w-full px-4 py-3 rounded-xl bg-surface border border-white/10 text-white text-xs font-monoItalic italic focus:border-white focus:outline-none transition-colors"
               />
             </div>
           </div>
 
           <div class="space-y-1.5">
-            <label for="watchDetails" class="block text-[11px] font-mono uppercase tracking-wider text-slate-400 italic">
-              What makes this timepiece mechanically unique? <span class="text-gold">*</span>
+            <label for="watchDetails" class="block text-[11px] font-monoItalic uppercase tracking-wider text-white italic">
+              What makes this timepiece mechanically unique? *
             </label>
             <textarea 
               id="watchDetails" 
               rows="4" 
               required 
-              placeholder="Explain the rare complication, planetary transmission, jumping mechanism, or dial peculiarity..." 
-              class="w-full px-4 py-3 rounded-xl bg-surface border border-white/5 text-white text-xs font-mono focus:border-gold focus:outline-none transition-colors"
+              placeholder="Explain the rare complication, jumping mechanism, or mechanical dial peculiarity..." 
+              class="w-full px-4 py-3 rounded-xl bg-surface border border-white/10 text-white text-xs font-monoItalic italic focus:border-white focus:outline-none transition-colors"
             ></textarea>
           </div>
 
           <div class="space-y-1.5">
-            <label for="watchLink" class="block text-[11px] font-mono uppercase tracking-wider text-slate-400 italic">
-              Reference Link / URL (Optional)
+            <label for="watchLink" class="block text-[11px] font-monoItalic uppercase tracking-wider text-white italic">
+              Reference Link / Official URL (Optional)
             </label>
             <input 
               type="url" 
               id="watchLink" 
               placeholder="https://manufacture.com/reference" 
-              class="w-full px-4 py-3 rounded-xl bg-surface border border-white/5 text-white text-xs font-mono focus:border-gold focus:outline-none transition-colors"
+              class="w-full px-4 py-3 rounded-xl bg-surface border border-white/10 text-white text-xs font-monoItalic italic focus:border-white focus:outline-none transition-colors"
             />
           </div>
 
           <button 
             type="submit" 
             id="submitBtn"
-            class="w-full py-3.5 rounded-xl bg-gold hover:bg-goldHover text-obsidian font-mono text-xs uppercase tracking-wider font-bold italic flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(212,175,55,0.2)] cursor-pointer"
+            class="w-full py-3.5 rounded-xl bg-white hover:bg-neutral-200 text-obsidian font-monoItalic text-xs uppercase tracking-wider font-bold italic flex items-center justify-center gap-2 transition-all cursor-pointer"
           >
-            <i data-lucide="send" class="w-4 h-4"></i>
+            <i data-lucide="send" class="w-4 h-4 text-obsidian"></i>
             <span>Submit Watch Proposal</span>
           </button>
         </form>
 
-        <div id="submissionConfirmation" class="hidden p-6 rounded-xl bg-surface border border-gold/40 text-center space-y-3">
-          <div class="w-10 h-10 rounded-full bg-gold/20 text-gold flex items-center justify-center mx-auto">
+        <div id="submissionConfirmation" class="hidden p-6 rounded-xl bg-surface border border-white/20 text-center space-y-3">
+          <div class="w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center mx-auto">
             <i data-lucide="check" class="w-5 h-5"></i>
           </div>
-          <div class="font-italic-headline text-gold text-lg font-bold">Proposal Dispatched</div>
-          <p class="text-slate-400 text-xs font-mono italic">Thank you. The timepiece has been logged into the editorial pipeline for review.</p>
-          <button onclick="resetIdeaForm()" class="inline-flex items-center gap-1.5 text-xs font-mono text-gold hover:underline pt-2">
+          <div class="font-headline text-white text-lg font-bold italic">Proposal Dispatched</div>
+          <p class="text-white/70 text-xs font-monoItalic italic">Thank you. The timepiece has been logged into the editorial pipeline for review.</p>
+          <button onclick="resetIdeaForm()" class="inline-flex items-center gap-1.5 text-xs font-monoItalic text-white hover:underline pt-2 italic">
             <span>Submit Another Timepiece</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-white"></i>
           </button>
         </div>
 
@@ -207,9 +199,9 @@
   </main>
 
   <div id="shortsModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'shortsModal')">
-    <div class="relative w-full max-w-3xl bg-carbon rounded-2xl border border-gold/30 overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]">
+    <div class="relative w-full max-w-3xl bg-carbon rounded-2xl border border-white/20 overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]">
       
-      <button onclick="closeShortsModal()" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-obsidian text-slate-300 hover:text-white flex items-center justify-center border border-white/10 transition-colors" aria-label="Close modal">
+      <button onclick="closeShortsModal()" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-obsidian text-white/80 hover:text-white flex items-center justify-center border border-white/20 transition-colors" aria-label="Close modal">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
@@ -219,15 +211,17 @@
 
       <div class="flex-1 p-6 md:p-8 overflow-y-auto space-y-6 flex flex-col justify-between">
         <div>
-          <span id="modalBrand" class="font-mono text-xs uppercase tracking-widest text-gold italic block mb-1"></span>
-          <h3 id="modalTitle" class="font-italic-headline text-2xl font-bold text-white mb-6"></h3>
-          <div class="space-y-2 font-mono text-xs" id="modalSpecsContainer"></div>
+          <span id="modalBrand" class="font-monoItalic text-xs uppercase tracking-widest text-white/70 italic block mb-1"></span>
+          <h3 id="modalTitle" class="font-headline text-2xl font-bold text-white mb-2 italic"></h3>
+          <div id="modalPrice" class="font-monoItalic text-sm text-white font-bold italic mb-6"></div>
+
+          <div class="space-y-2 font-monoItalic text-xs italic" id="modalSpecsContainer"></div>
         </div>
 
         <div class="pt-6 border-t border-white/10">
-          <a id="modalProductLink" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 rounded-lg bg-gold hover:bg-goldHover text-obsidian font-mono text-xs uppercase tracking-wider font-bold italic flex items-center justify-center gap-2 transition-all">
+          <a id="modalProductLink" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 rounded-lg bg-white hover:bg-neutral-200 text-obsidian font-monoItalic text-xs uppercase tracking-wider font-bold italic flex items-center justify-center gap-2 transition-all">
             <span>Official Product Page</span>
-            <i data-lucide="external-link" class="w-4 h-4"></i>
+            <i data-lucide="external-link" class="w-4 h-4 text-obsidian"></i>
           </a>
         </div>
       </div>
@@ -236,18 +230,18 @@
   </div>
 
   <div id="pinModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'pinModal')">
-    <div class="relative w-full max-w-sm bg-carbon rounded-2xl border border-gold/30 p-6 space-y-5 shadow-2xl text-center">
-      <button onclick="closePinModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white" aria-label="Close authentication">
+    <div class="relative w-full max-w-sm bg-carbon rounded-2xl border border-white/20 p-6 space-y-5 shadow-2xl text-center">
+      <button onclick="closePinModal()" class="absolute top-4 right-4 text-white/60 hover:text-white" aria-label="Close authentication">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
-      <div class="w-12 h-12 rounded-full border border-gold/40 flex items-center justify-center bg-surface mx-auto text-gold">
+      <div class="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center bg-surface mx-auto text-white">
         <i data-lucide="lock" class="w-5 h-5"></i>
       </div>
 
       <div class="space-y-1">
-        <h3 class="font-italic-headline text-xl font-bold text-white">Curator Authentication</h3>
-        <p class="text-xs font-mono text-slate-400 italic">Enter your security key to view submissions.</p>
+        <h3 class="font-headline text-xl font-bold text-white italic">Curator Authentication</h3>
+        <p class="text-xs font-monoItalic text-white/70 italic">Enter your security key to view submissions.</p>
       </div>
 
       <form onsubmit="verifyPin(event)" class="space-y-3">
@@ -255,11 +249,11 @@
           type="password" 
           id="pinInput" 
           placeholder="Passcode..." 
-          class="w-full px-4 py-3 text-center tracking-widest text-base rounded-xl bg-surface border border-white/10 text-gold font-mono focus:border-gold focus:outline-none"
+          class="w-full px-4 py-3 text-center tracking-widest text-base rounded-xl bg-surface border border-white/20 text-white font-monoItalic focus:border-white focus:outline-none italic"
           autofocus
         />
-        <div id="pinError" class="text-red-400 text-[11px] font-mono hidden">Invalid Security Passcode</div>
-        <button type="submit" class="w-full py-3 rounded-xl bg-gold hover:bg-goldHover text-obsidian font-mono text-xs uppercase font-bold italic transition-all">
+        <div id="pinError" class="text-white text-[11px] font-monoItalic italic hidden">Invalid Security Passcode</div>
+        <button type="submit" class="w-full py-3 rounded-xl bg-white hover:bg-neutral-200 text-obsidian font-monoItalic text-xs uppercase font-bold italic transition-all">
           Unlock Vault
         </button>
       </form>
@@ -267,27 +261,27 @@
   </div>
 
   <div id="vaultModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex items-center justify-center p-4 sm:p-6" onclick="handleModalBackdropClick(event, 'vaultModal')">
-    <div class="relative w-full max-w-4xl bg-carbon rounded-2xl border border-gold/40 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
+    <div class="relative w-full max-w-4xl bg-carbon rounded-2xl border border-white/20 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
       
       <div class="p-6 bg-surface border-b border-white/10 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold">
+          <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white">
             <i data-lucide="database" class="w-4 h-4"></i>
           </div>
           <div>
-            <h3 class="font-italic-headline text-xl font-bold text-white">Curator Editorial Dossier</h3>
-            <span id="submissionCount" class="text-[10px] font-mono text-gold italic uppercase">0 Logged Submissions</span>
+            <h3 class="font-headline text-xl font-bold text-white italic">Curator Editorial Dossier</h3>
+            <span id="submissionCount" class="text-[10px] font-monoItalic text-white/70 italic uppercase">0 Logged Submissions</span>
           </div>
         </div>
         <div class="flex items-center gap-2">
-          <button onclick="exportSubmissionsJSON()" class="px-3 py-1.5 rounded bg-surface border border-white/10 text-slate-300 hover:text-white text-xs font-mono transition-colors flex items-center gap-1.5" title="Download backup">
-            <i data-lucide="download" class="w-3.5 h-3.5 text-gold"></i>
+          <button onclick="exportSubmissionsJSON()" class="px-3 py-1.5 rounded bg-surface border border-white/10 text-white hover:text-white text-xs font-monoItalic italic transition-colors flex items-center gap-1.5" title="Download backup">
+            <i data-lucide="download" class="w-3.5 h-3.5 text-white"></i>
             <span>Export JSON</span>
           </button>
-          <button onclick="clearAllSubmissions()" class="px-3 py-1.5 rounded bg-red-950/50 border border-red-500/30 text-red-400 hover:bg-red-900/60 text-xs font-mono transition-colors">
+          <button onclick="clearAllSubmissions()" class="px-3 py-1.5 rounded bg-surface border border-white/20 text-white hover:bg-white/10 text-xs font-monoItalic italic transition-colors">
             Clear All
           </button>
-          <button onclick="closeVaultModal()" class="w-8 h-8 rounded-full bg-surface text-slate-400 hover:text-white flex items-center justify-center border border-white/10 ml-2" aria-label="Close dashboard">
+          <button onclick="closeVaultModal()" class="w-8 h-8 rounded-full bg-surface text-white/70 hover:text-white flex items-center justify-center border border-white/10 ml-2" aria-label="Close dashboard">
             <i data-lucide="x" class="w-5 h-5"></i>
           </button>
         </div>
@@ -298,10 +292,10 @@
     </div>
   </div>
 
-  <footer class="border-t border-white/5 bg-carbon py-8">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+  <footer class="border-t border-white/10 bg-carbon py-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-monoItalic text-white/70 italic">
       <div class="flex items-center gap-3">
-        <div class="w-6 h-6 rounded-full border border-gold/30 flex items-center justify-center overflow-hidden shrink-0">
+        <div class="w-6 h-6 rounded-full border border-white/20 flex items-center justify-center overflow-hidden shrink-0">
           <img 
             src="https://unavatar.io/youtube/AVRAMO613" 
             alt="AVRAMO Logo" 
@@ -309,26 +303,26 @@
             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=100&q=80';"
           />
         </div>
-        <span class="font-italic-headline text-slate-300 font-bold text-sm">AVRAMO</span>
+        <span class="font-headline text-white font-bold text-sm italic">AVRAMO</span>
         <span class="italic">— Pure Horological Archive</span>
       </div>
 
       <div class="flex items-center gap-4">
-        <button onclick="openPinModal()" class="text-[11px] text-slate-600 hover:text-gold transition-colors flex items-center gap-1.5 italic cursor-pointer focus:outline-none focus:text-gold">
-          <i data-lucide="lock" class="w-3 h-3"></i>
+        <button onclick="openPinModal()" class="text-[11px] text-white/60 hover:text-white transition-colors flex items-center gap-1.5 italic cursor-pointer focus:outline-none">
+          <i data-lucide="lock" class="w-3 h-3 text-white"></i>
           <span>Curator Portal</span>
         </button>
-        <span class="text-slate-700">|</span>
-        <span class="text-slate-600">© 2026</span>
+        <span class="text-white/40">|</span>
+        <span class="text-white/60 italic">© 2026</span>
       </div>
     </div>
   </footer>
 
   <script>
     // =========================================================================
-    // CONFIGURATION & CATALOG
+    // CONFIGURATION & FACTORY DATA
     // =========================================================================
-    const ACCESS_PIN = "613"; // Your secret curator passcode
+    const ACCESS_PIN = "613";
 
     const shortsCatalog = [
       {
@@ -336,11 +330,11 @@
         shortId: "ZGFUKtZpW0U",
         brand: "Jacob & Co.",
         model: "Casino Tourbillon",
+        price: "$300,000 USD",
         thumbnail: "https://i.ytimg.com/vi/ZGFUKtZpW0U/maxresdefault.jpg",
         specs: {
           diameter: "44.0 mm",
           thickness: "16.3 mm",
-          lugToLug: "52.0 mm",
           movement: "Caliber JCAM51 Manual-Wind (Flying Tourbillon)",
           waterResistance: "30 Meters (3 bar)",
           caseMaterial: "18K Rose Gold / Onyx Dial / Ceramic Ball"
@@ -352,11 +346,11 @@
         shortId: "UGEAk3CqJ2Y",
         brand: "Van Cleef & Arpels",
         model: "Lady Arpels Heures Florales",
+        price: "€288,000 – €293,000 EUR",
         thumbnail: "https://i.ytimg.com/vi/UGEAk3CqJ2Y/maxresdefault.jpg",
         specs: {
           diameter: "38.0 mm",
           thickness: "13.0 mm",
-          lugToLug: "44.5 mm",
           movement: "Automatic Mechanical with Flower Automaton Module",
           waterResistance: "30 Meters (3 bar)",
           caseMaterial: "18K Rose Gold / Diamonds & Miniature Painting"
@@ -368,12 +362,12 @@
         shortId: "mFlK6dQRHn0",
         brand: "H. Moser & Cie.",
         model: "Swiss Alp Watch Final Edition",
+        price: "30,000 CHF (Limited to 50 Pieces)",
         thumbnail: "https://i.ytimg.com/vi/mFlK6dQRHn0/maxresdefault.jpg",
         specs: {
           diameter: "38.2 mm x 44.0 mm",
           thickness: "10.5 mm",
-          lugToLug: "44.0 mm",
-          movement: "Caliber HMC 324 Hand-Wound (100h Reserve)",
+          movement: "Caliber HMC 324 Hand-Wound (~100h Reserve)",
           waterResistance: "30 Meters (3 bar)",
           caseMaterial: "Black DLC Steel / Vantablack Dial"
         },
@@ -396,22 +390,23 @@
               onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80';"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-carbon via-transparent to-black/20"></div>
-            <div class="absolute inset-0 m-auto w-12 h-12 rounded-full bg-obsidian/80 border border-gold/60 flex items-center justify-center text-gold group-hover:scale-110 group-hover:bg-gold group-hover:text-obsidian transition-all shadow-xl backdrop-blur-md">
+            <div class="absolute inset-0 m-auto w-12 h-12 rounded-full bg-obsidian/80 border border-white/40 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-white group-hover:text-obsidian transition-all shadow-xl backdrop-blur-md">
               <i data-lucide="play" class="w-5 h-5 fill-current ml-0.5"></i>
             </div>
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
             <div>
-              <span class="font-mono text-[10px] uppercase tracking-wider text-gold italic block">${item.brand}</span>
-              <h2 class="font-italic-headline text-lg font-bold text-white">${item.model}</h2>
+              <span class="font-monoItalic text-[10px] uppercase tracking-wider text-white/70 italic block">${item.brand}</span>
+              <h2 class="font-headline text-lg font-bold text-white italic">${item.model}</h2>
+              <span class="font-monoItalic text-xs text-white italic font-bold block mt-1">${item.price}</span>
             </div>
-            <div class="grid grid-cols-2 gap-2 font-mono text-[11px] bg-surface p-3 rounded-lg border border-white/5">
-              <div><span class="text-slate-500 block text-[9px] uppercase italic">Diameter</span><span class="text-slate-200 font-bold">${item.specs.diameter}</span></div>
-              <div><span class="text-slate-500 block text-[9px] uppercase italic">Thickness</span><span class="text-slate-200 font-bold">${item.specs.thickness}</span></div>
-              <div><span class="text-slate-500 block text-[9px] uppercase italic">Lug-to-Lug</span><span class="text-slate-200 font-bold">${item.specs.lugToLug}</span></div>
-              <div><span class="text-slate-500 block text-[9px] uppercase italic">WR</span><span class="text-gold font-bold">${item.specs.waterResistance}</span></div>
+            <div class="grid grid-cols-2 gap-2 font-monoItalic text-[11px] bg-surface p-3 rounded-lg border border-white/10 italic">
+              <div><span class="text-white/60 block text-[9px] uppercase italic">Diameter</span><span class="text-white font-bold">${item.specs.diameter}</span></div>
+              <div><span class="text-white/60 block text-[9px] uppercase italic">Thickness</span><span class="text-white font-bold">${item.specs.thickness}</span></div>
+              <div><span class="text-white/60 block text-[9px] uppercase italic">WR</span><span class="text-white font-bold">${item.specs.waterResistance}</span></div>
+              <div><span class="text-white/60 block text-[9px] uppercase italic">Price</span><span class="text-white font-bold truncate block">${item.price.split(' ')[0]}</span></div>
             </div>
-            <a href="${item.productUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="py-2.5 rounded-lg bg-surface hover:bg-gold hover:text-obsidian text-slate-300 font-mono text-[11px] uppercase tracking-wider italic font-bold flex items-center justify-center gap-1.5 border border-white/5 transition-all">
+            <a href="${item.productUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="py-2.5 rounded-lg bg-surface hover:bg-white hover:text-obsidian text-white font-monoItalic text-[11px] uppercase tracking-wider italic font-bold flex items-center justify-center gap-1.5 border border-white/10 transition-all">
               <span>Official Product Page</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
@@ -433,35 +428,32 @@
       
       document.getElementById('modalBrand').innerText = item.brand;
       document.getElementById('modalTitle').innerText = item.model;
+      document.getElementById('modalPrice').innerText = `Retail Price: ${item.price}`;
       document.getElementById('modalProductLink').href = item.productUrl;
 
       // Privacy-enhanced embed with inline mobile playback
       iframe.src = `https://www.youtube-nocookie.com/embed/${item.shortId}?autoplay=1&playsinline=1&modestbranding=1&rel=0`;
 
       document.getElementById('modalSpecsContainer').innerHTML = `
-        <div class="p-2 bg-surface rounded border border-white/5 flex justify-between">
-          <span class="text-slate-500 uppercase text-[10px] italic">Case Diameter</span>
-          <span class="text-white font-bold">${item.specs.diameter}</span>
+        <div class="p-2 bg-surface rounded border border-white/10 flex justify-between">
+          <span class="text-white/60 uppercase text-[10px] italic">Case Diameter</span>
+          <span class="text-white font-bold italic">${item.specs.diameter}</span>
         </div>
-        <div class="p-2 bg-surface rounded border border-white/5 flex justify-between">
-          <span class="text-slate-500 uppercase text-[10px] italic">Case Thickness</span>
-          <span class="text-white font-bold">${item.specs.thickness}</span>
+        <div class="p-2 bg-surface rounded border border-white/10 flex justify-between">
+          <span class="text-white/60 uppercase text-[10px] italic">Case Thickness</span>
+          <span class="text-white font-bold italic">${item.specs.thickness}</span>
         </div>
-        <div class="p-2 bg-surface rounded border border-white/5 flex justify-between">
-          <span class="text-slate-500 uppercase text-[10px] italic">Lug-to-Lug Span</span>
-          <span class="text-white font-bold">${item.specs.lugToLug}</span>
+        <div class="p-2 bg-surface rounded border border-white/10 flex justify-between">
+          <span class="text-white/60 uppercase text-[10px] italic">Caliber / Movement</span>
+          <span class="text-white font-bold truncate max-w-[180px] italic">${item.specs.movement}</span>
         </div>
-        <div class="p-2 bg-surface rounded border border-white/5 flex justify-between">
-          <span class="text-slate-500 uppercase text-[10px] italic">Movement</span>
-          <span class="text-gold font-bold truncate max-w-[180px]">${item.specs.movement}</span>
+        <div class="p-2 bg-surface rounded border border-white/10 flex justify-between">
+          <span class="text-white/60 uppercase text-[10px] italic">Water Resistance</span>
+          <span class="text-white font-bold italic">${item.specs.waterResistance}</span>
         </div>
-        <div class="p-2 bg-surface rounded border border-white/5 flex justify-between">
-          <span class="text-slate-500 uppercase text-[10px] italic">Water Resistance</span>
-          <span class="text-white font-bold">${item.specs.waterResistance}</span>
-        </div>
-        <div class="p-2 bg-surface rounded border border-white/5 flex justify-between">
-          <span class="text-slate-500 uppercase text-[10px] italic">Case Material</span>
-          <span class="text-slate-300 font-bold">${item.specs.caseMaterial}</span>
+        <div class="p-2 bg-surface rounded border border-white/10 flex justify-between">
+          <span class="text-white/60 uppercase text-[10px] italic">Case Material</span>
+          <span class="text-white font-bold italic">${item.specs.caseMaterial}</span>
         </div>
       `;
 
@@ -482,7 +474,6 @@
       }
     }
 
-    // Global Escape Key Listener for Modals
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeShortsModal();
@@ -572,31 +563,31 @@
 
       if (list.length === 0) {
         container.innerHTML = `
-          <div class="text-center py-12 text-slate-500 font-mono text-xs italic">
+          <div class="text-center py-12 text-white/50 font-monoItalic text-xs italic">
             <i data-lucide="inbox" class="w-8 h-8 mx-auto mb-2 opacity-50"></i>
             No watch suggestions submitted yet.
           </div>
         `;
       } else {
         container.innerHTML = list.map(item => `
-          <div class="p-5 rounded-xl bg-surface border border-white/5 space-y-3 font-mono text-xs">
+          <div class="p-5 rounded-xl bg-surface border border-white/10 space-y-3 font-monoItalic text-xs italic">
             <div class="flex items-start justify-between">
               <div>
-                <span class="text-[10px] text-gold italic uppercase block">${item.timestamp}</span>
-                <h4 class="font-italic-headline text-lg font-bold text-white mt-0.5">${item.watch}</h4>
+                <span class="text-[10px] text-white/70 italic uppercase block">${item.timestamp}</span>
+                <h4 class="font-headline text-lg font-bold text-white mt-0.5 italic">${item.watch}</h4>
               </div>
-              <button onclick="deleteSubmission('${item.id}')" class="text-slate-500 hover:text-red-400 transition-colors p-1 cursor-pointer" title="Delete entry">
+              <button onclick="deleteSubmission('${item.id}')" class="text-white/60 hover:text-white transition-colors p-1 cursor-pointer" title="Delete entry">
                 <i data-lucide="trash-2" class="w-4 h-4"></i>
               </button>
             </div>
 
-            <div class="p-3 bg-carbon rounded text-slate-300 text-xs italic leading-relaxed">
+            <div class="p-3 bg-carbon rounded text-white text-xs italic leading-relaxed">
               "${item.details}"
             </div>
 
-            <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-white/5 text-[11px]">
-              <span class="text-slate-400">Submitter: <strong class="text-white">${item.email}</strong></span>
-              ${item.link ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer" class="text-gold hover:underline flex items-center gap-1">Reference URL <i data-lucide="external-link" class="w-3 h-3"></i></a>` : '<span class="text-slate-600">No URL</span>'}
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-white/10 text-[11px]">
+              <span class="text-white/70 italic">Submitter: <strong class="text-white">${item.email}</strong></span>
+              ${item.link ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer" class="text-white hover:underline flex items-center gap-1 italic">Reference URL <i data-lucide="external-link" class="w-3 h-3 text-white"></i></a>` : '<span class="text-white/40 italic">No URL</span>'}
             </div>
           </div>
         `).join('');
@@ -639,7 +630,7 @@
       downloadAnchor.remove();
     }
 
-    // Initialize Page
+    // Initialize
     renderGrid();
   </script>
 </body>
