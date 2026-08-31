@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AVRAMO — Watch Archive & Specs</title>
-  <meta name="description" content="Watch specs, live currency conversion, availability, and manufacture links from AVRAMO." />
+  <title>AVRAMO — Watch Archive, Specs & Editorial</title>
+  <meta name="description" content="Watch specs, live currency conversion, and horological articles from AVRAMO." />
 
   <!-- Live Channel Profile Picture / Favicon -->
   <link rel="icon" type="image/png" href="https://unavatar.io/youtube/AVRAMO613" />
@@ -62,9 +62,17 @@
       background-color: #11131A;
       color: #FFFFFF;
     }
+    /* Hide scrollbars for clean horizontal swipe on mobile */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
   </style>
 </head>
-<body class="bg-obsidian text-white antialiased italic">
+<body class="bg-obsidian text-white antialiased italic selection:bg-white/20">
 
   <!-- ==================== HEADER ==================== -->
   <header class="fixed top-0 left-0 right-0 z-40 bg-obsidian/95 backdrop-blur-md border-b border-white/10">
@@ -87,10 +95,16 @@
         </div>
       </a>
 
-      <!-- Header Actions -->
-      <div class="flex items-center gap-6">
-        <a href="#submit-idea" class="text-xs font-monoItalic italic text-white/80 hover:text-white transition-colors flex items-center gap-1.5 focus:outline-none">
-          <span>Suggest a Watch</span>
+      <!-- Navigation Links -->
+      <div class="flex items-center gap-5 sm:gap-7">
+        <a href="#featured-watches" class="text-xs font-monoItalic italic text-white/80 hover:text-white transition-colors">
+          Watches
+        </a>
+        <a href="#articles-section" class="text-xs font-monoItalic italic text-white/80 hover:text-white transition-colors">
+          Articles
+        </a>
+        <a href="#submit-idea" class="text-xs font-monoItalic italic text-white/80 hover:text-white transition-colors flex items-center gap-1">
+          <span>Suggest</span>
           <i data-lucide="arrow-down-right" class="w-3.5 h-3.5 text-white"></i>
         </a>
       </div>
@@ -98,10 +112,10 @@
     </div>
   </header>
 
-  <main class="pt-28 pb-24 px-6 max-w-7xl mx-auto space-y-28">
+  <main class="pt-28 pb-24 px-6 max-w-7xl mx-auto space-y-32">
     
-    <!-- ==================== SECTION 1: SHORTS INDEX ==================== -->
-    <div>
+    <!-- ==================== SECTION 1: WATCHES INDEX (HORIZONTAL ON MOBILE) ==================== -->
+    <section id="featured-watches" class="scroll-mt-28">
       <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
         <h1 class="font-headline text-4xl sm:text-5xl font-bold text-white leading-tight italic">
           Featured Watches.
@@ -112,7 +126,7 @@
       </div>
 
       <!-- Currency Switcher Toolbar -->
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10 p-4 rounded-xl bg-carbon card-border">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 p-4 rounded-xl bg-carbon card-border">
         <div class="flex items-center gap-2">
           <i data-lucide="refresh-cw" class="w-4 h-4 text-white/70"></i>
           <span class="font-monoItalic text-xs text-white/80 uppercase tracking-wider italic">Currency Converter:</span>
@@ -140,13 +154,37 @@
         </div>
       </div>
 
-      <!-- Shorts Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="shortsGrid">
+      <!-- Mobile: Horizontal Swipe Carousel / Desktop: 3-Col Grid -->
+      <div class="relative">
+        <div class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-6 pb-6 pt-2 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:overflow-visible" id="shortsGrid">
+          <!-- Injected Dynamically by JavaScript -->
+        </div>
+      </div>
+      <p class="text-center text-[11px] font-monoItalic text-white/40 md:hidden pt-2 italic">← Swipe horizontally to browse →</p>
+    </section>
+
+    <!-- ==================== SECTION 2: ARTICLES & ESSAYS ==================== -->
+    <section id="articles-section" class="scroll-mt-28 space-y-10">
+      <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b border-white/10 pb-6">
+        <div>
+          <span class="font-monoItalic text-[10px] uppercase tracking-widest text-white/70 italic block mb-1">Horological Editorial</span>
+          <h2 class="font-headline text-3xl sm:text-4xl font-bold text-white italic">Articles & Deep Dives.</h2>
+        </div>
+        
+        <!-- Write Article / Contributor Button -->
+        <button onclick="openWriterGateModal()" class="px-5 py-2.5 rounded-xl bg-white hover:bg-neutral-200 text-obsidian font-monoItalic text-xs uppercase font-bold italic flex items-center gap-2 transition-all cursor-pointer">
+          <i data-lucide="pen-tool" class="w-3.5 h-3.5 text-obsidian"></i>
+          <span>Write an Article</span>
+        </button>
+      </div>
+
+      <!-- Articles Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="articlesGrid">
         <!-- Injected Dynamically by JavaScript -->
       </div>
-    </div>
+    </section>
 
-    <!-- ==================== SECTION 2: SUBMIT WATCH IDEAS ==================== -->
+    <!-- ==================== SECTION 3: SUBMIT WATCH IDEAS ==================== -->
     <section id="submit-idea" class="max-w-3xl mx-auto scroll-mt-28">
       <div class="rounded-2xl bg-carbon card-border p-8 sm:p-12 space-y-8 relative overflow-hidden">
 
@@ -251,21 +289,18 @@
 
   </main>
 
-  <!-- ==================== MODAL 1: SHORTS & SPECS PLAYER ==================== -->
+  <!-- ==================== MODAL: SHORTS & SPECS PLAYER ==================== -->
   <div id="shortsModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'shortsModal')">
     <div class="relative w-full max-w-3xl bg-carbon rounded-2xl border border-white/20 overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]">
       
-      <!-- Close Button -->
       <button onclick="closeShortsModal()" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-obsidian text-white/80 hover:text-white flex items-center justify-center border border-white/20 transition-colors" aria-label="Close modal">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
-      <!-- 9:16 Video Frame -->
       <div class="w-full md:w-[360px] bg-black flex items-center justify-center aspect-[9/16] max-h-[75vh] md:max-h-[85vh]">
         <iframe id="modalIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
 
-      <!-- Specs & Direct Link -->
       <div class="flex-1 p-6 md:p-8 overflow-y-auto space-y-6 flex flex-col justify-between">
         <div>
           <span id="modalBrand" class="font-monoItalic text-xs uppercase tracking-widest text-white/70 italic block mb-1"></span>
@@ -276,7 +311,6 @@
             <span id="modalAvailability" class="font-monoItalic text-xs px-2.5 py-1 rounded bg-surface border border-white/20 text-white italic"></span>
           </div>
 
-          <!-- Specs Table -->
           <div class="space-y-2 font-monoItalic text-xs italic" id="modalSpecsContainer"></div>
         </div>
 
@@ -291,7 +325,155 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL 2: SECRET PIN PROMPT ==================== -->
+  <!-- ==================== MODAL: FULL ARTICLE READER ==================== -->
+  <div id="articleModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex items-center justify-center p-4 sm:p-6" onclick="handleModalBackdropClick(event, 'articleModal')">
+    <div class="relative w-full max-w-3xl bg-carbon rounded-2xl border border-white/20 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
+      
+      <button onclick="closeArticleModal()" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-obsidian text-white/80 hover:text-white flex items-center justify-center border border-white/20 transition-colors">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="overflow-y-auto p-6 sm:p-10 space-y-6">
+        <div class="space-y-2 border-b border-white/10 pb-6">
+          <span id="articleModalTag" class="font-monoItalic text-xs text-white/70 uppercase tracking-widest italic block"></span>
+          <h2 id="articleModalTitle" class="font-headline text-3xl sm:text-4xl font-bold text-white italic leading-tight"></h2>
+          <div class="flex items-center gap-4 text-xs font-monoItalic text-white/60 italic pt-2">
+            <span id="articleModalAuthor"></span>
+            <span>•</span>
+            <span id="articleModalDate"></span>
+          </div>
+        </div>
+
+        <div id="articleModalBody" class="space-y-4 text-sm sm:text-base text-white/90 font-sansItalic italic leading-relaxed whitespace-pre-line"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: WRITER GATEWAY (PASSCODE VS APPLY) ==================== -->
+  <div id="writerGateModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'writerGateModal')">
+    <div class="relative w-full max-w-lg bg-carbon rounded-2xl border border-white/20 p-6 sm:p-8 space-y-6 shadow-2xl">
+      
+      <button onclick="closeWriterGateModal()" class="absolute top-4 right-4 text-white/60 hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="space-y-1 text-center">
+        <h3 class="font-headline text-2xl font-bold text-white italic">AVRAMO Editorial</h3>
+        <p class="text-xs font-monoItalic text-white/70 italic">Curator publishing access or contributor application.</p>
+      </div>
+
+      <!-- Tab Switcher -->
+      <div class="flex rounded-xl bg-surface p-1 border border-white/10">
+        <button id="tabCuratorBtn" onclick="switchWriterTab('curator')" class="flex-1 py-2 rounded-lg bg-white text-obsidian font-monoItalic text-xs uppercase font-bold italic transition-all">
+          Publisher (Code 613)
+        </button>
+        <button id="tabApplyBtn" onclick="switchWriterTab('apply')" class="flex-1 py-2 rounded-lg text-white/70 hover:text-white font-monoItalic text-xs uppercase italic transition-all">
+          Apply as Writer
+        </button>
+      </div>
+
+      <!-- Option 1: Curator Passcode -->
+      <div id="curatorTabContent" class="space-y-4">
+        <p class="text-xs font-monoItalic text-white/60 italic">If you are the curator or an authorized contributor, enter your code to publish immediately.</p>
+        <form onsubmit="verifyWriterPin(event)" class="space-y-3">
+          <input 
+            type="password" 
+            id="writerPinInput" 
+            placeholder="Enter Code (613)..." 
+            class="w-full px-4 py-3 text-center tracking-widest text-base rounded-xl bg-surface border border-white/20 text-white font-monoItalic focus:border-white focus:outline-none italic"
+          />
+          <div id="writerPinError" class="text-red-400 text-center text-[11px] font-monoItalic italic hidden">Invalid passcode</div>
+          <button type="submit" class="w-full py-3 rounded-xl bg-white hover:bg-neutral-200 text-obsidian font-monoItalic text-xs uppercase font-bold italic transition-all">
+            Open Article Studio
+          </button>
+        </form>
+      </div>
+
+      <!-- Option 2: Apply to Write Form -->
+      <div id="applyTabContent" class="space-y-4 hidden">
+        <p class="text-xs font-monoItalic text-white/60 italic">Submit your email and a sample draft / proof article. Submissions are reviewed for editorial publishing.</p>
+        <form id="writerApplyForm" onsubmit="handleWriterApply(event)" class="space-y-3">
+          <div>
+            <label class="block text-[10px] font-monoItalic uppercase text-white/70 italic mb-1">Your Email *</label>
+            <input type="email" id="applicantEmail" required placeholder="writer@domain.com" class="w-full px-3.5 py-2.5 rounded-lg bg-surface border border-white/10 text-white text-xs font-monoItalic italic focus:border-white focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-[10px] font-monoItalic uppercase text-white/70 italic mb-1">Your Name / Pen Name *</label>
+            <input type="text" id="applicantName" required placeholder="e.g. John Doe" class="w-full px-3.5 py-2.5 rounded-lg bg-surface border border-white/10 text-white text-xs font-monoItalic italic focus:border-white focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-[10px] font-monoItalic uppercase text-white/70 italic mb-1">Sample / Proof Article Draft or Link *</label>
+            <textarea id="applicantSample" rows="4" required placeholder="Paste your draft essay, breakdown, or portfolio link..." class="w-full px-3.5 py-2.5 rounded-lg bg-surface border border-white/10 text-white text-xs font-monoItalic italic focus:border-white focus:outline-none"></textarea>
+          </div>
+          <button type="submit" class="w-full py-3 rounded-xl bg-white hover:bg-neutral-200 text-obsidian font-monoItalic text-xs uppercase font-bold italic transition-all">
+            Submit Writer Application
+          </button>
+        </form>
+        <div id="applySuccessNotice" class="hidden p-4 rounded-xl bg-surface border border-white/20 text-center text-xs font-monoItalic text-white italic">
+          Application submitted. We will review your proof article draft.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: ARTICLE CREATOR STUDIO (PASSCODE UNLOCKED) ==================== -->
+  <div id="studioModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex items-center justify-center p-4 sm:p-6" onclick="handleModalBackdropClick(event, 'studioModal')">
+    <div class="relative w-full max-w-3xl bg-carbon rounded-2xl border border-white/20 shadow-2xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto">
+      
+      <button onclick="closeStudioModal()" class="absolute top-4 right-4 text-white/60 hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="space-y-1">
+        <span class="text-[10px] font-monoItalic text-white/70 uppercase tracking-widest italic">Curator Studio</span>
+        <h3 class="font-headline text-2xl font-bold text-white italic">Publish New Article</h3>
+      </div>
+
+      <form onsubmit="handlePublishArticle(event)" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[11px] font-monoItalic uppercase text-white/70 italic mb-1">Article Title *</label>
+            <input type="text" id="newArticleTitle" required placeholder="e.g. The Mechanical Paradox of..." class="w-full px-4 py-2.5 rounded-xl bg-surface border border-white/10 text-white text-xs font-monoItalic italic focus:border-white focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-monoItalic uppercase text-white/70 italic mb-1">Category / Tag *</label>
+            <input type="text" id="newArticleTag" required placeholder="e.g. Complications, Independent, History" class="w-full px-4 py-2.5 rounded-xl bg-surface border border-white/10 text-white text-xs font-monoItalic italic focus:border-white focus:outline-none" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[11px] font-monoItalic uppercase text-white/70 italic mb-1">Author Byline *</label>
+            <input type="text" id="newArticleAuthor" required value="AVRAMO Editorial" class="w-full px-4 py-2.5 rounded-xl bg-surface border border-white/10 text-white text-xs font-monoItalic italic focus:border-white focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-monoItalic uppercase text-white/70 italic mb-1">Cover Image URL (Optional)</label>
+            <input type="url" id="newArticleImage" placeholder="https://images.unsplash.com/..." class="w-full px-4 py-2.5 rounded-xl bg-surface border border-white/10 text-white text-xs font-monoItalic italic focus:border-white focus:outline-none" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-monoItalic uppercase text-white/70 italic mb-1">Short Excerpt *</label>
+          <input type="text" id="newArticleExcerpt" required placeholder="A brief one-sentence teaser..." class="w-full px-4 py-2.5 rounded-xl bg-surface border border-white/10 text-white text-xs font-monoItalic italic focus:border-white focus:outline-none" />
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-monoItalic uppercase text-white/70 italic mb-1">Full Article Body *</label>
+          <textarea id="newArticleBody" rows="8" required placeholder="Write your full horological essay here..." class="w-full px-4 py-3 rounded-xl bg-surface border border-white/10 text-white text-xs font-monoItalic italic focus:border-white focus:outline-none leading-relaxed"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-white hover:bg-neutral-200 text-obsidian font-monoItalic text-xs uppercase font-bold italic transition-all flex items-center justify-center gap-2 cursor-pointer">
+          <i data-lucide="check" class="w-4 h-4"></i>
+          <span>Publish Article to Site</span>
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: SECRET PIN PROMPT FOR VAULT ==================== -->
   <div id="pinModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'pinModal')">
     <div class="relative w-full max-w-sm bg-carbon rounded-2xl border border-white/20 p-6 space-y-5 shadow-2xl text-center">
       <button onclick="closePinModal()" class="absolute top-4 right-4 text-white/60 hover:text-white" aria-label="Close authentication">
@@ -304,7 +486,7 @@
 
       <div class="space-y-1">
         <h3 class="font-headline text-xl font-bold text-white italic">Curator Access</h3>
-        <p class="text-xs font-monoItalic text-white/70 italic">Enter passcode to view suggestions.</p>
+        <p class="text-xs font-monoItalic text-white/70 italic">Enter passcode to view submissions & applications.</p>
       </div>
 
       <form onsubmit="verifyPin(event)" class="space-y-3">
@@ -323,7 +505,7 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL 3: SUBMISSIONS DASHBOARD ==================== -->
+  <!-- ==================== MODAL: CURATOR MASTER VAULT ==================== -->
   <div id="vaultModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex items-center justify-center p-4 sm:p-6" onclick="handleModalBackdropClick(event, 'vaultModal')">
     <div class="relative w-full max-w-4xl bg-carbon rounded-2xl border border-white/20 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
       
@@ -334,25 +516,28 @@
             <i data-lucide="database" class="w-4 h-4"></i>
           </div>
           <div>
-            <h3 class="font-headline text-xl font-bold text-white italic">Submitted Watch Ideas</h3>
-            <span id="submissionCount" class="text-[10px] font-monoItalic text-white/70 italic uppercase">0 Suggestions</span>
+            <h3 class="font-headline text-xl font-bold text-white italic">Curator Master Vault</h3>
+            <span class="text-[10px] font-monoItalic text-white/70 italic uppercase">Editorial & Suggestions Hub</span>
           </div>
         </div>
         <div class="flex items-center gap-2">
-          <button onclick="exportSubmissionsJSON()" class="px-3 py-1.5 rounded bg-surface border border-white/10 text-white hover:text-white text-xs font-monoItalic italic transition-colors flex items-center gap-1.5" title="Download backup">
-            <i data-lucide="download" class="w-3.5 h-3.5 text-white"></i>
-            <span>Export JSON</span>
-          </button>
-          <button onclick="clearAllSubmissions()" class="px-3 py-1.5 rounded bg-surface border border-white/20 text-white hover:bg-white/10 text-xs font-monoItalic italic transition-colors">
-            Clear All
-          </button>
           <button onclick="closeVaultModal()" class="w-8 h-8 rounded-full bg-surface text-white/70 hover:text-white flex items-center justify-center border border-white/10 ml-2" aria-label="Close dashboard">
             <i data-lucide="x" class="w-5 h-5"></i>
           </button>
         </div>
       </div>
 
-      <!-- Submissions List -->
+      <!-- Vault Section Switcher -->
+      <div class="flex border-b border-white/10 bg-surface/50 px-6 pt-3 gap-6 font-monoItalic text-xs italic">
+        <button id="vaultTabWatchBtn" onclick="switchVaultTab('watches')" class="pb-3 border-b-2 border-white text-white font-bold">
+          Watch Suggestions (<span id="vaultWatchCount">0</span>)
+        </button>
+        <button id="vaultTabWritersBtn" onclick="switchVaultTab('writers')" class="pb-3 border-b-2 border-transparent text-white/60 hover:text-white">
+          Writer Applications (<span id="vaultWriterCount">0</span>)
+        </button>
+      </div>
+
+      <!-- Submissions List Container -->
       <div id="vaultSubmissionsList" class="p-6 overflow-y-auto space-y-4 flex-1">
         <!-- Injected via JavaScript -->
       </div>
@@ -389,25 +574,17 @@
   <!-- ==================== DATA & SCRIPTS ==================== -->
   <script>
     // =========================================================================
-    // CONFIGURATION & FACTORY CATALOG
+    // CONFIGURATION & CATALOG
     // =========================================================================
     const ACCESS_PIN = "613";
     let currentCurrency = "USD";
     let activeModalItemId = null;
+    let currentVaultTab = 'watches';
 
     // Fallback Exchange Rates (vs USD)
     let exchangeRates = {
-      USD: 1,
-      EUR: 0.92,
-      CHF: 0.88,
-      GBP: 0.79,
-      JPY: 154.5,
-      CAD: 1.37,
-      AUD: 1.52,
-      ILS: 3.70,
-      AED: 3.67,
-      SGD: 1.34,
-      HKD: 7.82
+      USD: 1, EUR: 0.92, CHF: 0.88, GBP: 0.79, JPY: 154.5,
+      CAD: 1.37, AUD: 1.52, ILS: 3.70, AED: 3.67, SGD: 1.34, HKD: 7.82
     };
 
     const shortsCatalog = [
@@ -470,6 +647,198 @@
       }
     ];
 
+    // Seed Articles
+    const initialArticles = [
+      {
+        id: "art-1",
+        title: "The Physics of Epicyclic Automata in Horology",
+        tag: "Technical Mechanics",
+        author: "AVRAMO Editorial",
+        date: "Aug 2026",
+        image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80",
+        excerpt: "An analysis of planetary gear transmission, jumping aperture wheels, and the kinetic energy conservation required for complex dial automata.",
+        body: "High horology frequently challenges the traditional coaxial gear train by introducing eccentric, jumping, or planetary motions. In watches like the Van Cleef Lady Arpels Heures Florales, the mechanical energy required to release and advance multiple flower petals instantaneously presents a friction and power reserve paradox.\n\nTo overcome the sudden torque drop, independent barrel springs and deceleration governors must be implemented. Without such kinetic management, amplitude drops drastically upon every release cycle, degrading rate stability.\n\nThis editorial explores the delicate tolerances required between kinetic friction, dial weight, and escapement constancy."
+      },
+      {
+        id: "art-2",
+        title: "Vantablack and the Optical Illusion of Zero-Reflection Dials",
+        tag: "Material Science",
+        author: "AVRAMO Editorial",
+        date: "Aug 2026",
+        image: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=600&q=80",
+        excerpt: "How vertically aligned carbon nanotube arrays absorb 99.965% of light to create the void-like dial architecture of the Swiss Alp Final Edition.",
+        body: "Vantablack represents one of the most mechanically demanding dial materials ever adopted in contemporary watchmaking. Grown through chemical vapor deposition (CVD), each microscopic nanotube traps photons, converting light into heat rather than permitting reflection.\n\nFor watchmakers like H. Moser & Cie., cased within the Swiss Alp Watch, handling Vantablack requires hermetically sealed cleanroom assembly. Even microscopic contact with a watch hand will permanently crush the nanotube structure, destroying the optical absorption property.\n\nWhen paired with minimalist hands, the visual result is an object stripped of perspective—a literal horological singularity on the wrist."
+      }
+    ];
+
+    // =========================================================================
+    // ARTICLES DATA ENGINE (LOCALSTORAGE + SEEDS)
+    // =========================================================================
+    function getStoredArticles() {
+      try {
+        const stored = localStorage.getItem('avramo_articles');
+        return stored ? JSON.parse(stored) : initialArticles;
+      } catch (e) {
+        return initialArticles;
+      }
+    }
+
+    function saveArticle(art) {
+      const list = getStoredArticles();
+      list.unshift(art);
+      localStorage.setItem('avramo_articles', JSON.stringify(list));
+    }
+
+    function renderArticles() {
+      const articles = getStoredArticles();
+      const grid = document.getElementById('articlesGrid');
+      grid.innerHTML = articles.map(art => `
+        <div class="rounded-2xl bg-carbon card-border overflow-hidden flex flex-col cursor-pointer" onclick="openArticleModal('${art.id}')">
+          <div class="relative w-full aspect-[16/10] bg-surface overflow-hidden">
+            <img 
+              src="${art.image || 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80'}" 
+              alt="${art.title}" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80';"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-carbon via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-obsidian/80 border border-white/20 text-[10px] font-monoItalic uppercase tracking-wider text-white italic backdrop-blur-md">
+              ${art.tag}
+            </span>
+          </div>
+
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div class="space-y-2">
+              <h3 class="font-headline text-xl font-bold text-white italic leading-snug">${art.title}</h3>
+              <p class="text-white/70 text-xs font-sansItalic italic line-clamp-3 leading-relaxed">${art.excerpt}</p>
+            </div>
+            
+            <div class="flex items-center justify-between pt-3 border-t border-white/10 font-monoItalic text-[11px] text-white/60 italic">
+              <span>${art.author}</span>
+              <span class="text-white hover:underline flex items-center gap-1">Read Essay <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-white"></i></span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function openArticleModal(id) {
+      const articles = getStoredArticles();
+      const art = articles.find(a => a.id === id);
+      if (!art) return;
+
+      document.getElementById('articleModalTag').innerText = art.tag;
+      document.getElementById('articleModalTitle').innerText = art.title;
+      document.getElementById('articleModalAuthor').innerText = art.author;
+      document.getElementById('articleModalDate').innerText = art.date;
+      document.getElementById('articleModalBody').innerText = art.body;
+
+      document.getElementById('articleModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeArticleModal() {
+      document.getElementById('articleModal').classList.add('hidden');
+    }
+
+    // =========================================================================
+    // WRITER GATEWAY & CREATOR STUDIO
+    // =========================================================================
+    function openWriterGateModal() {
+      document.getElementById('writerPinInput').value = '';
+      document.getElementById('writerPinError').classList.add('hidden');
+      document.getElementById('applySuccessNotice').classList.add('hidden');
+      document.getElementById('writerGateModal').classList.remove('hidden');
+      switchWriterTab('curator');
+      lucide.createIcons();
+    }
+
+    function closeWriterGateModal() {
+      document.getElementById('writerGateModal').classList.add('hidden');
+    }
+
+    function switchWriterTab(tab) {
+      const curBtn = document.getElementById('tabCuratorBtn');
+      const appBtn = document.getElementById('tabApplyBtn');
+      const curContent = document.getElementById('curatorTabContent');
+      const appContent = document.getElementById('applyTabContent');
+
+      if (tab === 'curator') {
+        curBtn.className = "flex-1 py-2 rounded-lg bg-white text-obsidian font-monoItalic text-xs uppercase font-bold italic transition-all";
+        appBtn.className = "flex-1 py-2 rounded-lg text-white/70 hover:text-white font-monoItalic text-xs uppercase italic transition-all";
+        curContent.classList.remove('hidden');
+        appContent.classList.add('hidden');
+      } else {
+        appBtn.className = "flex-1 py-2 rounded-lg bg-white text-obsidian font-monoItalic text-xs uppercase font-bold italic transition-all";
+        curBtn.className = "flex-1 py-2 rounded-lg text-white/70 hover:text-white font-monoItalic text-xs uppercase italic transition-all";
+        appContent.classList.remove('hidden');
+        curContent.classList.add('hidden');
+      }
+    }
+
+    function verifyWriterPin(e) {
+      e.preventDefault();
+      const code = document.getElementById('writerPinInput').value.trim();
+      if (code === ACCESS_PIN) {
+        closeWriterGateModal();
+        openStudioModal();
+      } else {
+        document.getElementById('writerPinError').classList.remove('hidden');
+        document.getElementById('writerPinInput').value = '';
+      }
+    }
+
+    function handleWriterApply(e) {
+      e.preventDefault();
+      const email = document.getElementById('applicantEmail').value;
+      const name = document.getElementById('applicantName').value;
+      const sample = document.getElementById('applicantSample').value;
+
+      const app = {
+        id: Date.now().toString(),
+        timestamp: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        email, name, sample
+      };
+
+      const stored = localStorage.getItem('avramo_writer_applications');
+      const list = stored ? JSON.parse(stored) : [];
+      list.unshift(app);
+      localStorage.setItem('avramo_writer_applications', JSON.stringify(list));
+
+      document.getElementById('writerApplyForm').reset();
+      document.getElementById('writerApplyForm').classList.add('hidden');
+      document.getElementById('applySuccessNotice').classList.remove('hidden');
+    }
+
+    function openStudioModal() {
+      document.getElementById('studioModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeStudioModal() {
+      document.getElementById('studioModal').classList.add('hidden');
+    }
+
+    function handlePublishArticle(e) {
+      e.preventDefault();
+      const newArt = {
+        id: 'art-' + Date.now(),
+        title: document.getElementById('newArticleTitle').value,
+        tag: document.getElementById('newArticleTag').value,
+        author: document.getElementById('newArticleAuthor').value,
+        date: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+        image: document.getElementById('newArticleImage').value || 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80',
+        excerpt: document.getElementById('newArticleExcerpt').value,
+        body: document.getElementById('newArticleBody').value
+      };
+
+      saveArticle(newArt);
+      closeStudioModal();
+      renderArticles();
+      alert("Article published successfully to the archive.");
+    }
+
     // =========================================================================
     // LIVE CURRENCY EXCHANGE LOGIC
     // =========================================================================
@@ -509,7 +878,7 @@
     }
 
     // =========================================================================
-    // RENDERING LOGIC
+    // RENDERING WATCHES GRID
     // =========================================================================
     function renderGrid() {
       const grid = document.getElementById('shortsGrid');
@@ -520,7 +889,7 @@
           : `<span class="text-white/60 italic">○ Sold Out</span>`;
 
         return `
-          <div class="rounded-2xl bg-carbon card-border overflow-hidden flex flex-col cursor-pointer" onclick="openShortsModal('${item.id}')">
+          <div class="min-w-[280px] w-[80vw] max-w-[340px] shrink-0 snap-center md:min-w-0 md:w-full rounded-2xl bg-carbon card-border overflow-hidden flex flex-col cursor-pointer" onclick="openShortsModal('${item.id}')">
             <div class="relative w-full aspect-[9/13] bg-black overflow-hidden group">
               <img 
                 src="${item.thumbnail}" 
@@ -548,7 +917,7 @@
                 <div><span class="text-white/60 block text-[9px] uppercase italic">Diameter</span><span class="text-white font-bold">${item.specs.diameter}</span></div>
                 <div><span class="text-white/60 block text-[9px] uppercase italic">Thickness</span><span class="text-white font-bold">${item.specs.thickness}</span></div>
                 <div><span class="text-white/60 block text-[9px] uppercase italic">WR</span><span class="text-white font-bold">${item.specs.waterResistance}</span></div>
-                <div><span class="text-white/60 block text-[9px] uppercase italic">Price (${currentCurrency})</span><span class="text-white font-bold truncate block">${formattedPrice}</span></div>
+                <div><span class="text-white/60 block text-[9px] uppercase italic">Price</span><span class="text-white font-bold truncate block">${formattedPrice.split('.')[0]}</span></div>
               </div>
 
               <a href="${item.productUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="py-2.5 rounded-lg bg-surface hover:bg-white hover:text-obsidian text-white font-monoItalic text-[11px] uppercase tracking-wider italic font-bold flex items-center justify-center gap-1.5 border border-white/10 transition-all">
@@ -625,6 +994,9 @@
     function handleModalBackdropClick(e, modalId) {
       if (e.target.id === modalId) {
         if (modalId === 'shortsModal') closeShortsModal();
+        if (modalId === 'articleModal') closeArticleModal();
+        if (modalId === 'writerGateModal') closeWriterGateModal();
+        if (modalId === 'studioModal') closeStudioModal();
         if (modalId === 'pinModal') closePinModal();
         if (modalId === 'vaultModal') closeVaultModal();
       }
@@ -633,32 +1005,19 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeShortsModal();
+        closeArticleModal();
+        closeWriterGateModal();
+        closeStudioModal();
         closePinModal();
         closeVaultModal();
       }
     });
 
     // =========================================================================
-    // LOCAL STORAGE SUBMISSION ENGINE
+    // SUBMISSION HANDLING (SUGGESTIONS)
     // =========================================================================
-    function getStoredSubmissions() {
-      try {
-        const stored = localStorage.getItem('avramo_submissions');
-        return stored ? JSON.parse(stored) : [];
-      } catch (err) {
-        return [];
-      }
-    }
-
-    function saveSubmission(submission) {
-      const list = getStoredSubmissions();
-      list.unshift(submission);
-      localStorage.setItem('avramo_submissions', JSON.stringify(list));
-    }
-
     function handleIdeaSubmit(e) {
       e.preventDefault();
-      
       const newSubmission = {
         id: Date.now().toString(),
         timestamp: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
@@ -668,7 +1027,10 @@
         link: document.getElementById('watchLink').value || ''
       };
 
-      saveSubmission(newSubmission);
+      const stored = localStorage.getItem('avramo_submissions');
+      const list = stored ? JSON.parse(stored) : [];
+      list.unshift(newSubmission);
+      localStorage.setItem('avramo_submissions', JSON.stringify(list));
 
       document.getElementById('ideaForm').reset();
       document.getElementById('ideaForm').classList.add('hidden');
@@ -683,7 +1045,7 @@
     }
 
     // =========================================================================
-    // SECRET PASSCODE AUTHENTICATION & VAULT VIEWER
+    // CURATOR VAULT
     // =========================================================================
     function openPinModal() {
       document.getElementById('pinInput').value = '';
@@ -700,7 +1062,6 @@
     function verifyPin(e) {
       e.preventDefault();
       const enteredPin = document.getElementById('pinInput').value.trim();
-      
       if (enteredPin === ACCESS_PIN) {
         closePinModal();
         openVaultModal();
@@ -710,46 +1071,24 @@
       }
     }
 
-    function openVaultModal() {
-      const list = getStoredSubmissions();
-      const countEl = document.getElementById('submissionCount');
-      const container = document.getElementById('vaultSubmissionsList');
+    function switchVaultTab(tab) {
+      currentVaultTab = tab;
+      const watchBtn = document.getElementById('vaultTabWatchBtn');
+      const writerBtn = document.getElementById('vaultTabWritersBtn');
 
-      countEl.innerText = `${list.length} Suggestions`;
-
-      if (list.length === 0) {
-        container.innerHTML = `
-          <div class="text-center py-12 text-white/50 font-monoItalic text-xs italic">
-            <i data-lucide="inbox" class="w-8 h-8 mx-auto mb-2 opacity-50"></i>
-            No watch suggestions yet.
-          </div>
-        `;
+      if (tab === 'watches') {
+        watchBtn.className = "pb-3 border-b-2 border-white text-white font-bold";
+        writerBtn.className = "pb-3 border-b-2 border-transparent text-white/60 hover:text-white";
       } else {
-        container.innerHTML = list.map(item => `
-          <div class="p-5 rounded-xl bg-surface border border-white/10 space-y-3 font-monoItalic text-xs italic">
-            <div class="flex items-start justify-between">
-              <div>
-                <span class="text-[10px] text-white/70 italic uppercase block">${item.timestamp}</span>
-                <h4 class="font-headline text-lg font-bold text-white mt-0.5 italic">${item.watch}</h4>
-              </div>
-              <button onclick="deleteSubmission('${item.id}')" class="text-white/60 hover:text-white transition-colors p-1 cursor-pointer" title="Delete entry">
-                <i data-lucide="trash-2" class="w-4 h-4"></i>
-              </button>
-            </div>
-
-            <div class="p-3 bg-carbon rounded text-white text-xs italic leading-relaxed">
-              "${item.details}"
-            </div>
-
-            <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-white/10 text-[11px]">
-              <span class="text-white/70 italic">Submitter: <strong class="text-white">${item.email}</strong></span>
-              ${item.link ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer" class="text-white hover:underline flex items-center gap-1 italic">Link <i data-lucide="external-link" class="w-3 h-3 text-white"></i></a>` : '<span class="text-white/40 italic">No Link</span>'}
-            </div>
-          </div>
-        `).join('');
+        writerBtn.className = "pb-3 border-b-2 border-white text-white font-bold";
+        watchBtn.className = "pb-3 border-b-2 border-transparent text-white/60 hover:text-white";
       }
+      renderVaultContent();
+    }
 
+    function openVaultModal() {
       document.getElementById('vaultModal').classList.remove('hidden');
+      switchVaultTab('watches');
       lucide.createIcons();
     }
 
@@ -757,37 +1096,79 @@
       document.getElementById('vaultModal').classList.add('hidden');
     }
 
+    function renderVaultContent() {
+      const container = document.getElementById('vaultSubmissionsList');
+      
+      const watchList = JSON.parse(localStorage.getItem('avramo_submissions') || '[]');
+      const writerList = JSON.parse(localStorage.getItem('avramo_writer_applications') || '[]');
+
+      document.getElementById('vaultWatchCount').innerText = watchList.length;
+      document.getElementById('vaultWriterCount').innerText = writerList.length;
+
+      if (currentVaultTab === 'watches') {
+        if (watchList.length === 0) {
+          container.innerHTML = `<div class="text-center py-12 text-white/50 font-monoItalic text-xs italic">No watch suggestions yet.</div>`;
+        } else {
+          container.innerHTML = watchList.map(item => `
+            <div class="p-5 rounded-xl bg-surface border border-white/10 space-y-3 font-monoItalic text-xs italic">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="text-[10px] text-white/70 italic uppercase block">${item.timestamp}</span>
+                  <h4 class="font-headline text-lg font-bold text-white mt-0.5 italic">${item.watch}</h4>
+                </div>
+                <button onclick="deleteSubmission('${item.id}')" class="text-white/60 hover:text-white transition-colors p-1 cursor-pointer">
+                  <i data-lucide="trash-2" class="w-4 h-4"></i>
+                </button>
+              </div>
+              <div class="p-3 bg-carbon rounded text-white text-xs italic leading-relaxed">"${item.details}"</div>
+              <div class="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-white/10 text-[11px]">
+                <span class="text-white/70 italic">Submitter: <strong class="text-white">${item.email}</strong></span>
+                ${item.link ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer" class="text-white hover:underline flex items-center gap-1 italic">Link <i data-lucide="external-link" class="w-3 h-3 text-white"></i></a>` : '<span class="text-white/40 italic">No Link</span>'}
+              </div>
+            </div>
+          `).join('');
+        }
+      } else {
+        if (writerList.length === 0) {
+          container.innerHTML = `<div class="text-center py-12 text-white/50 font-monoItalic text-xs italic">No writer applications submitted yet.</div>`;
+        } else {
+          container.innerHTML = writerList.map(item => `
+            <div class="p-5 rounded-xl bg-surface border border-white/10 space-y-3 font-monoItalic text-xs italic">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="text-[10px] text-white/70 italic uppercase block">${item.timestamp}</span>
+                  <h4 class="font-headline text-lg font-bold text-white mt-0.5 italic">${item.name}</h4>
+                  <span class="text-xs text-white/70">${item.email}</span>
+                </div>
+                <button onclick="deleteWriterApp('${item.id}')" class="text-white/60 hover:text-white transition-colors p-1 cursor-pointer">
+                  <i data-lucide="trash-2" class="w-4 h-4"></i>
+                </button>
+              </div>
+              <div class="p-3 bg-carbon rounded text-white text-xs italic leading-relaxed whitespace-pre-line">${item.sample}</div>
+            </div>
+          `).join('');
+        }
+      }
+      lucide.createIcons();
+    }
+
     function deleteSubmission(id) {
-      let list = getStoredSubmissions();
+      let list = JSON.parse(localStorage.getItem('avramo_submissions') || '[]');
       list = list.filter(i => i.id !== id);
       localStorage.setItem('avramo_submissions', JSON.stringify(list));
-      openVaultModal();
+      renderVaultContent();
     }
 
-    function clearAllSubmissions() {
-      if (confirm("Clear all suggestions?")) {
-        localStorage.removeItem('avramo_submissions');
-        openVaultModal();
-      }
+    function deleteWriterApp(id) {
+      let list = JSON.parse(localStorage.getItem('avramo_writer_applications') || '[]');
+      list = list.filter(i => i.id !== id);
+      localStorage.setItem('avramo_writer_applications', JSON.stringify(list));
+      renderVaultContent();
     }
 
-    function exportSubmissionsJSON() {
-      const list = getStoredSubmissions();
-      if (list.length === 0) {
-        alert("No submissions to export.");
-        return;
-      }
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(list, null, 2));
-      const downloadAnchor = document.createElement('a');
-      downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `avramo_suggestions_${Date.now()}.json`);
-      document.body.appendChild(downloadAnchor);
-      downloadAnchor.click();
-      downloadAnchor.remove();
-    }
-
-    // Initialize Page & Fetch Exchange Rates
+    // Initialize Page
     initExchangeRates();
+    renderArticles();
   </script>
 </body>
 </html>
