@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AVRAMO — Horological Archive</title>
-  <meta name="description" content="Watch specifications, retail prices, and independent watchmaking articles by AVRAMO." />
+  <title>AVRAMO — Horological Journal & Archive</title>
+  <meta name="description" content="An independent journal of rare complications, factory specifications, and horological analysis by AVRAMO." />
 
   <link rel="icon" type="image/png" href="https://unavatar.io/youtube/AVRAMO613" />
 
-  <!-- Fonts: Playfair Display (Serif), Inter, Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@1,300;1,400;1,500;1,600&family=Playfair+Display:ital,wght@1,400;1,600;1,700&family=Space+Grotesk:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@1,300;1,400;1,500;1,600&family=Playfair+Display:ital,wght@1,400;1,500;1,600;1,700&family=Space+Grotesk:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -21,14 +20,19 @@
       theme: {
         extend: {
           colors: {
-            obsidian: '#0A0B0E',
-            panel: '#12141A',
-            surface: '#181B22',
+            acmBase: '#141312',       // Warm espresso charcoal
+            acmPanel: '#1C1B19',      // Warm secondary panel
+            acmSurface: '#24221F',    // Elevated surface
+            acmBorder: '#2E2A25',     // Warm taupe border
+            acmBorderHover: '#4A443D',// Active border
+            acmBone: '#F5F2EB',       // Warm bone white text
+            acmMuted: '#A8A39A',      // Warm taupe secondary text
+            acmFaint: '#6E6A62',      // Muted metadata
           },
           fontFamily: {
-            headline: ['"Playfair Display"', 'serif'],
-            body: ['"Inter"', 'sans-serif'],
-            mono: ['"Space Grotesk"', 'monospace'],
+            serifItalic: ['"Playfair Display"', 'serif'],
+            sansItalic: ['"Inter"', 'sans-serif'],
+            monoItalic: ['"Space Grotesk"', 'monospace'],
           }
         }
       }
@@ -37,28 +41,27 @@
 
   <style>
     body { 
-      background-color: #0A0B0E; 
-      color: #FFFFFF; 
+      background-color: #141312; 
+      color: #F5F2EB; 
       font-family: 'Inter', sans-serif;
       font-style: italic;
     }
     .font-serif-italic { font-family: 'Playfair Display', serif; font-style: italic; }
     .font-mono-italic { font-family: 'Space Grotesk', monospace; font-style: italic; }
-    .border-subtle { border: 1px solid rgba(255, 255, 255, 0.12); }
-    .border-subtle:hover { border-color: rgba(255, 255, 255, 0.3); }
+    .border-acm { border: 1px solid #2E2A25; }
+    .border-acm:hover { border-color: #4A443D; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    select option { background-color: #12141A; color: #FFFFFF; }
+    select option { background-color: #1C1B19; color: #F5F2EB; }
   </style>
 </head>
-<body class="bg-obsidian text-white antialiased italic selection:bg-white/20">
+<body class="bg-acmBase text-acmBone antialiased italic selection:bg-acmBone/20">
 
-  <!-- ==================== HEADER ==================== -->
-  <header class="fixed top-0 left-0 right-0 z-40 bg-obsidian/95 backdrop-blur-sm border-b border-white/10">
+  <header class="fixed top-0 left-0 right-0 z-40 bg-acmBase/95 backdrop-blur-sm border-b border-acmBorder">
     <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
       
-      <a href="#" class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-full border border-white/20 bg-panel overflow-hidden shrink-0">
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-9 h-9 rounded-full border border-acmBorder bg-acmPanel overflow-hidden shrink-0">
           <img 
             src="https://unavatar.io/youtube/AVRAMO613" 
             alt="AVRAMO" 
@@ -66,13 +69,16 @@
             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=100&q=80';"
           />
         </div>
-        <span class="font-serif-italic text-2xl font-bold text-white tracking-wide">AVRAMO</span>
+        <div class="flex flex-col">
+          <span class="font-serif-italic text-2xl font-bold tracking-wider text-acmBone">AVRAMO</span>
+          <span class="font-mono-italic text-[9px] uppercase tracking-widest text-acmMuted -mt-1">Horological Journal</span>
+        </div>
       </a>
 
-      <nav class="flex items-center gap-6 font-mono-italic text-xs text-white/80">
-        <a href="#watches" class="hover:text-white transition-colors">Watches</a>
-        <a href="#articles" class="hover:text-white transition-colors">Articles</a>
-        <a href="#suggest" class="hover:text-white transition-colors">Suggest</a>
+      <nav class="flex items-center gap-6 font-mono-italic text-xs text-acmMuted">
+        <a href="#curated-collection" class="hover:text-acmBone transition-colors">Watches</a>
+        <a href="#journal" class="hover:text-acmBone transition-colors">Journal</a>
+        <a href="#suggest" class="hover:text-acmBone transition-colors">Suggest</a>
       </nav>
 
     </div>
@@ -80,32 +86,37 @@
 
   <main class="pt-28 pb-24 px-6 max-w-6xl mx-auto space-y-24">
     
-    <!-- ==================== WELCOME NOTE ==================== -->
-    <section class="max-w-3xl space-y-4 border-b border-white/10 pb-12">
-      <h1 class="font-serif-italic text-3xl sm:text-4xl font-bold text-white leading-snug">
-        Welcome to AVRAMO.
-      </h1>
-      <p class="text-white/80 text-sm sm:text-base leading-relaxed font-body">
-        Hi, and welcome to the AVRAMO website! This site is my personal extension of the channel—here you’ll find more detailed specs, converted pricing, and some articles. I’d love to have you involved by suggesting unique watches (or anything horological) for upcoming videos, or submitting a draft to publish your own watch journalism alongside mine.
-      </p>
-      <span class="font-mono-italic text-xs text-white/50 block">Cheers, AVRAMO</span>
+    <section class="border-b border-acmBorder pb-14 pt-4">
+      <div class="max-w-3xl space-y-4">
+        <span class="font-mono-italic text-[10px] uppercase tracking-widest text-acmMuted block">Foreword & Notes</span>
+        <h1 class="font-serif-italic text-3xl sm:text-4xl font-bold text-acmBone leading-snug">
+          Welcome to AVRAMO.
+        </h1>
+        <p class="text-acmMuted text-sm sm:text-base leading-relaxed font-sansItalic">
+          Hi, and welcome to the AVRAMO website! This site is my personal extension of the channel—here you’ll find more detailed specs, converted pricing, and some articles. I’d love to have you involved by suggesting unique watches (or anything horological) for upcoming videos, or submitting a draft to publish your own watch journalism alongside mine.
+        </p>
+        <div class="pt-2 flex items-center gap-3 font-mono-italic text-xs text-acmMuted">
+          <span class="text-acmBone">Cheers, AVRAMO</span>
+          <span>•</span>
+          <span>Independent Horology</span>
+        </div>
+      </div>
     </section>
 
-    <!-- ==================== SECTION 1: WATCHES ==================== -->
-    <section id="watches" class="scroll-mt-28 space-y-8">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-5">
+    <section id="curated-collection" class="scroll-mt-28 space-y-8">
+      
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-acmBorder pb-5">
         <div>
-          <h2 class="font-serif-italic text-2xl sm:text-3xl font-bold text-white">Featured Watches</h2>
-          <p class="text-white/60 text-xs sm:text-sm mt-1">Caliber dimensions, converted prices, and manufacture references.</p>
+          <span class="font-mono-italic text-[10px] uppercase tracking-widest text-acmMuted block mb-1">Issue Focus</span>
+          <h2 class="font-serif-italic text-2xl sm:text-3xl font-bold text-acmBone">Featured Timepieces</h2>
         </div>
 
-        <!-- Currency Switcher -->
         <div class="flex items-center gap-2 self-start sm:self-end">
-          <span class="font-mono-italic text-xs text-white/60">Currency:</span>
+          <span class="font-mono-italic text-xs text-acmMuted">Currency:</span>
           <select 
             id="currencySelect" 
             onchange="handleCurrencyChange(this.value)"
-            class="px-3 py-1.5 rounded bg-surface border border-white/20 text-white font-mono-italic text-xs focus:outline-none focus:border-white transition-colors cursor-pointer"
+            class="px-3 py-1.5 rounded bg-acmPanel border border-acmBorder text-acmBone font-mono-italic text-xs focus:outline-none focus:border-acmBorderHover transition-colors cursor-pointer"
           >
             <option value="USD">USD ($)</option>
             <option value="EUR">EUR (€)</option>
@@ -122,129 +133,131 @@
         </div>
       </div>
 
-      <!-- Mobile Horizontal Scroll / Desktop Grid -->
-      <div class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-6 pb-4 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-3 md:overflow-visible" id="shortsGrid">
-        <!-- Injected via JavaScript -->
+      <div id="centerpieceContainer">
+        </div>
+
+      <div class="space-y-4 pt-4">
+        <span class="font-mono-italic text-[11px] uppercase tracking-wider text-acmMuted block">Additional Archive Entries</span>
+        <div class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory gap-6 pb-4 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 md:overflow-visible" id="secondaryWatchesGrid">
+          </div>
+        <p class="text-center text-[11px] font-mono-italic text-acmFaint md:hidden">← Swipe horizontally to browse →</p>
       </div>
-      <p class="text-center text-[11px] font-mono-italic text-white/40 md:hidden">← Swipe horizontally to view all timepieces →</p>
+
     </section>
 
-    <!-- ==================== SECTION 2: ARTICLES ==================== -->
-    <section id="articles" class="scroll-mt-28 space-y-8">
-      <div class="flex items-end justify-between border-b border-white/10 pb-5">
+    <section id="journal" class="scroll-mt-28 space-y-8">
+      <div class="flex items-end justify-between border-b border-acmBorder pb-5">
         <div>
-          <h2 class="font-serif-italic text-2xl sm:text-3xl font-bold text-white">Articles & Notes</h2>
-          <p class="text-white/60 text-xs sm:text-sm mt-1">Essays on complications, dials, and independent watchmaking.</p>
+          <span class="font-mono-italic text-[10px] uppercase tracking-widest text-acmMuted block mb-1">Essays & Notes</span>
+          <h2 class="font-serif-italic text-2xl sm:text-3xl font-bold text-acmBone">The Horological Journal</h2>
         </div>
         
-        <button onclick="openWriterGateModal()" class="px-3.5 py-1.5 rounded bg-white text-obsidian font-mono-italic text-xs font-bold hover:bg-neutral-200 transition-colors flex items-center gap-1.5 cursor-pointer">
+        <button onclick="openWriterGateModal()" class="px-4 py-2 rounded bg-acmBone text-acmBase font-mono-italic text-xs font-bold hover:bg-[#E2DDD3] transition-colors flex items-center gap-1.5 cursor-pointer">
           <i data-lucide="pen-tool" class="w-3.5 h-3.5"></i>
           <span>Write / Submit Draft</span>
         </button>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="articlesGrid">
-        <!-- Injected via JavaScript -->
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="articlesGrid">
+        </div>
     </section>
 
-    <!-- ==================== SECTION 3: SUGGEST A WATCH ==================== -->
-    <section id="suggest" class="max-w-2xl mx-auto scroll-mt-28 border border-white/10 rounded-xl bg-panel p-6 sm:p-10 space-y-6">
+    <section id="suggest" class="max-w-2xl mx-auto scroll-mt-28 border border-acmBorder rounded-xl bg-acmPanel p-6 sm:p-10 space-y-6">
       <div class="space-y-1">
-        <h2 class="font-serif-italic text-2xl font-bold text-white">Suggest a Watch</h2>
-        <p class="text-white/60 text-xs sm:text-sm">Have a timepiece with an unusual mechanism or dial to cover next?</p>
+        <span class="font-mono-italic text-[10px] uppercase tracking-widest text-acmMuted block">Reader Submissions</span>
+        <h2 class="font-serif-italic text-2xl font-bold text-acmBone">Suggest a Timepiece</h2>
+        <p class="text-acmMuted text-xs sm:text-sm">Know of a watch with an unusual mechanical complication, dial, or architecture to cover next?</p>
       </div>
 
       <form id="ideaForm" onsubmit="handleIdeaSubmit(event)" class="space-y-4 font-mono-italic text-xs">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label for="submitterEmail" class="block text-white/70 mb-1">Your Email *</label>
+            <label for="submitterEmail" class="block text-acmMuted mb-1">Your Email *</label>
             <input 
               type="email" 
               id="submitterEmail" 
               required 
-              placeholder="name@email.com" 
-              class="w-full px-3.5 py-2.5 rounded bg-surface border border-white/10 text-white focus:border-white focus:outline-none"
+              placeholder="name@domain.com" 
+              class="w-full px-3.5 py-2.5 rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none"
             />
           </div>
 
           <div>
-            <label for="watchName" class="block text-white/70 mb-1">Brand & Model *</label>
+            <label for="watchName" class="block text-acmMuted mb-1">Brand & Model *</label>
             <input 
               type="text" 
               id="watchName" 
               required 
               placeholder="e.g. Ludovic Ballouard Upside Down" 
-              class="w-full px-3.5 py-2.5 rounded bg-surface border border-white/10 text-white focus:border-white focus:outline-none"
+              class="w-full px-3.5 py-2.5 rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none"
             />
           </div>
         </div>
 
         <div>
-          <label for="watchDetails" class="block text-white/70 mb-1">What makes it notable? *</label>
+          <label for="watchDetails" class="block text-acmMuted mb-1">What makes it mechanically notable? *</label>
           <textarea 
             id="watchDetails" 
             rows="3" 
             required 
-            placeholder="Explain the complication, dial peculiarity, or movement..." 
-            class="w-full px-3.5 py-2.5 rounded bg-surface border border-white/10 text-white focus:border-white focus:outline-none"
+            placeholder="Explain the jumping mechanism, complication, or reason for coverage..." 
+            class="w-full px-3.5 py-2.5 rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none leading-relaxed"
           ></textarea>
         </div>
 
         <div>
-          <label for="watchLink" class="block text-white/70 mb-1">Link / URL (Optional)</label>
+          <label for="watchLink" class="block text-acmMuted mb-1">Reference URL (Optional)</label>
           <input 
             type="url" 
             id="watchLink" 
             placeholder="https://..." 
-            class="w-full px-3.5 py-2.5 rounded bg-surface border border-white/10 text-white focus:border-white focus:outline-none"
+            class="w-full px-3.5 py-2.5 rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none"
           />
         </div>
 
         <button 
           type="submit" 
           id="submitBtn"
-          class="w-full py-3 rounded bg-white hover:bg-neutral-200 text-obsidian font-bold text-xs uppercase transition-colors cursor-pointer"
+          class="w-full py-3 rounded bg-acmBone hover:bg-[#E2DDD3] text-acmBase font-bold text-xs uppercase transition-colors cursor-pointer"
         >
           Send Suggestion
         </button>
       </form>
 
-      <div id="submissionConfirmation" class="hidden p-4 rounded bg-surface border border-white/20 text-center space-y-2">
-        <p class="text-white text-xs font-mono-italic">Suggestion received. It has been logged for upcoming coverage.</p>
-        <button onclick="resetIdeaForm()" class="text-[11px] text-white/70 hover:underline">Submit another timepiece</button>
+      <div id="submissionConfirmation" class="hidden p-4 rounded bg-acmSurface border border-acmBorder text-center space-y-2">
+        <p class="text-acmBone text-xs font-mono-italic">Suggestion received. It has been logged for upcoming coverage.</p>
+        <button onclick="resetIdeaForm()" class="text-[11px] text-acmMuted hover:underline">Submit another timepiece</button>
       </div>
     </section>
 
   </main>
 
-  <!-- ==================== MODAL: WATCH VIDEO & SPECS ==================== -->
   <div id="shortsModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'shortsModal')">
-    <div class="relative w-full max-w-3xl bg-panel rounded-xl border border-white/20 overflow-hidden flex flex-col md:flex-row max-h-[90vh]">
+    <div class="relative w-full max-w-3xl bg-acmPanel rounded-xl border border-acmBorder overflow-hidden flex flex-col md:flex-row max-h-[90vh]">
       
-      <button onclick="closeShortsModal()" class="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-obsidian text-white/80 hover:text-white flex items-center justify-center border border-white/20">
+      <button onclick="closeShortsModal()" class="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-acmBase text-acmMuted hover:text-acmBone flex items-center justify-center border border-acmBorder" aria-label="Close">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
-      <div class="w-full md:w-[340px] bg-black flex items-center justify-center aspect-[9/16] max-h-[70vh] md:max-h-[85vh]">
+      <div class="w-full md:w-[340px] bg-black flex items-center justify-center aspect-[9/16] max-h-[65vh] md:max-h-[85vh]">
         <iframe id="modalIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
 
       <div class="flex-1 p-6 md:p-8 overflow-y-auto space-y-6 flex flex-col justify-between">
         <div>
-          <span id="modalBrand" class="font-mono-italic text-[11px] uppercase tracking-wider text-white/60 block"></span>
-          <h3 id="modalTitle" class="font-serif-italic text-2xl font-bold text-white mb-2"></h3>
+          <span id="modalBrand" class="font-mono-italic text-[11px] uppercase tracking-wider text-acmMuted block"></span>
+          <h3 id="modalTitle" class="font-serif-italic text-2xl font-bold text-acmBone mb-2"></h3>
           
           <div class="flex items-center gap-3 mb-6">
-            <span id="modalPrice" class="font-mono-italic text-sm text-white font-bold"></span>
-            <span id="modalAvailability" class="font-mono-italic text-xs px-2 py-0.5 rounded bg-surface border border-white/10 text-white/80"></span>
+            <span id="modalPrice" class="font-mono-italic text-sm text-acmBone font-bold"></span>
+            <span id="modalAvailability" class="font-mono-italic text-xs px-2.5 py-0.5 rounded bg-acmSurface border border-acmBorder text-acmMuted"></span>
           </div>
 
           <div class="space-y-2 font-mono-italic text-xs" id="modalSpecsContainer"></div>
         </div>
 
-        <div class="pt-4 border-t border-white/10">
-          <a id="modalProductLink" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded bg-white hover:bg-neutral-200 text-obsidian font-mono-italic text-xs font-bold flex items-center justify-center gap-2 transition-colors">
+        <div class="pt-4 border-t border-acmBorder">
+          <a id="modalProductLink" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded bg-acmBone hover:bg-[#E2DDD3] text-acmBase font-mono-italic text-xs font-bold flex items-center justify-center gap-2 transition-colors">
             <span>Official Manufacture Page</span>
             <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
           </a>
@@ -254,86 +267,82 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL: ARTICLE READER ==================== -->
   <div id="articleModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm hidden flex items-center justify-center p-4 sm:p-6" onclick="handleModalBackdropClick(event, 'articleModal')">
-    <div class="relative w-full max-w-2xl bg-panel rounded-xl border border-white/20 p-6 sm:p-10 max-h-[90vh] overflow-y-auto space-y-6">
+    <div class="relative w-full max-w-2xl bg-acmPanel rounded-xl border border-acmBorder p-6 sm:p-10 max-h-[90vh] overflow-y-auto space-y-6">
       
-      <button onclick="closeArticleModal()" class="absolute top-4 right-4 text-white/60 hover:text-white">
+      <button onclick="closeArticleModal()" class="absolute top-4 right-4 text-acmMuted hover:text-acmBone">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
-      <div class="border-b border-white/10 pb-4 space-y-1">
-        <span id="articleModalTag" class="font-mono-italic text-[10px] text-white/60 uppercase"></span>
-        <h2 id="articleModalTitle" class="font-serif-italic text-2xl sm:text-3xl font-bold text-white leading-tight"></h2>
-        <div class="flex items-center gap-3 text-xs font-mono-italic text-white/50 pt-2">
+      <div class="border-b border-acmBorder pb-4 space-y-1">
+        <span id="articleModalTag" class="font-mono-italic text-[10px] text-acmMuted uppercase"></span>
+        <h2 id="articleModalTitle" class="font-serif-italic text-2xl sm:text-3xl font-bold text-acmBone leading-tight"></h2>
+        <div class="flex items-center gap-3 text-xs font-mono-italic text-acmFaint pt-2">
           <span id="articleModalAuthor"></span>
           <span>•</span>
           <span id="articleModalDate"></span>
         </div>
       </div>
 
-      <div id="articleModalBody" class="text-sm text-white/90 leading-relaxed whitespace-pre-line font-body"></div>
+      <div id="articleModalBody" class="text-sm text-acmMuted leading-relaxed whitespace-pre-line font-sansItalic"></div>
     </div>
   </div>
 
-  <!-- ==================== MODAL: WRITER ACCESS & APPLICATION ==================== -->
   <div id="writerGateModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'writerGateModal')">
-    <div class="relative w-full max-w-md bg-panel rounded-xl border border-white/20 p-6 space-y-5">
+    <div class="relative w-full max-w-md bg-acmPanel rounded-xl border border-acmBorder p-6 space-y-5">
       
-      <button onclick="closeWriterGateModal()" class="absolute top-4 right-4 text-white/60 hover:text-white">
+      <button onclick="closeWriterGateModal()" class="absolute top-4 right-4 text-acmMuted hover:text-acmBone">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
       <div class="space-y-1 text-center">
-        <h3 class="font-serif-italic text-xl font-bold text-white">AVRAMO Editorial</h3>
-        <p class="text-xs font-mono-italic text-white/60">Publisher login or writer submission.</p>
+        <h3 class="font-serif-italic text-xl font-bold text-acmBone">AVRAMO Editorial</h3>
+        <p class="text-xs font-mono-italic text-acmMuted">Publisher access or article draft submission.</p>
       </div>
 
-      <div class="flex rounded bg-surface p-1 border border-white/10 font-mono-italic text-xs">
-        <button id="tabCuratorBtn" onclick="switchWriterTab('curator')" class="flex-1 py-1.5 rounded bg-white text-obsidian font-bold">
+      <div class="flex rounded bg-acmSurface p-1 border border-acmBorder font-mono-italic text-xs">
+        <button id="tabCuratorBtn" onclick="switchWriterTab('curator')" class="flex-1 py-1.5 rounded bg-acmBone text-acmBase font-bold">
           Publisher (613)
         </button>
-        <button id="tabApplyBtn" onclick="switchWriterTab('apply')" class="flex-1 py-1.5 rounded text-white/60 hover:text-white">
+        <button id="tabApplyBtn" onclick="switchWriterTab('apply')" class="flex-1 py-1.5 rounded text-acmMuted hover:text-acmBone">
           Apply to Write
         </button>
       </div>
 
-      <!-- Curator Studio PIN -->
       <div id="curatorTabContent" class="space-y-3 font-mono-italic text-xs">
         <form onsubmit="verifyWriterPin(event)" class="space-y-3">
           <input 
             type="password" 
             id="writerPinInput" 
             placeholder="Enter passcode (613)..." 
-            class="w-full px-3.5 py-2.5 text-center tracking-widest rounded bg-surface border border-white/10 text-white focus:border-white focus:outline-none"
+            class="w-full px-3.5 py-2.5 text-center tracking-widest rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none"
           />
-          <div id="writerPinError" class="text-white/60 text-center text-[11px] hidden">Incorrect passcode</div>
-          <button type="submit" class="w-full py-2.5 rounded bg-white text-obsidian font-bold hover:bg-neutral-200 transition-colors">
+          <div id="writerPinError" class="text-red-400 text-center text-[11px] hidden">Incorrect passcode</div>
+          <button type="submit" class="w-full py-2.5 rounded bg-acmBone text-acmBase font-bold hover:bg-[#E2DDD3] transition-colors">
             Open Editor Studio
           </button>
         </form>
       </div>
 
-      <!-- Apply Form -->
       <div id="applyTabContent" class="space-y-3 font-mono-italic text-xs hidden">
         <form id="writerApplyForm" onsubmit="handleWriterApply(event)" class="space-y-3">
           <div>
-            <label class="block text-white/70 mb-1">Email *</label>
-            <input type="email" id="applicantEmail" required placeholder="writer@domain.com" class="w-full px-3 py-2 rounded bg-surface border border-white/10 text-white focus:border-white focus:outline-none" />
+            <label class="block text-acmMuted mb-1">Email *</label>
+            <input type="email" id="applicantEmail" required placeholder="writer@domain.com" class="w-full px-3 py-2 rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none" />
           </div>
           <div>
-            <label class="block text-white/70 mb-1">Name / Pen Name *</label>
-            <input type="text" id="applicantName" required placeholder="Name" class="w-full px-3 py-2 rounded bg-surface border border-white/10 text-white focus:border-white focus:outline-none" />
+            <label class="block text-acmMuted mb-1">Name / Pen Name *</label>
+            <input type="text" id="applicantName" required placeholder="Name" class="w-full px-3 py-2 rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none" />
           </div>
           <div>
-            <label class="block text-white/70 mb-1">Proof Article Draft / URL *</label>
-            <textarea id="applicantSample" rows="3" required placeholder="Paste draft or portfolio link..." class="w-full px-3 py-2 rounded bg-surface border border-white/10 text-white focus:border-white focus:outline-none"></textarea>
+            <label class="block text-acmMuted mb-1">Proof Article Draft / URL *</label>
+            <textarea id="applicantSample" rows="3" required placeholder="Paste draft or portfolio link..." class="w-full px-3 py-2 rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none"></textarea>
           </div>
-          <button type="submit" class="w-full py-2.5 rounded bg-white text-obsidian font-bold hover:bg-neutral-200 transition-colors">
+          <button type="submit" class="w-full py-2.5 rounded bg-acmBone text-acmBase font-bold hover:bg-[#E2DDD3] transition-colors">
             Submit Application
           </button>
         </form>
-        <div id="applySuccessNotice" class="hidden p-3 rounded bg-surface text-center text-xs text-white">
+        <div id="applySuccessNotice" class="hidden p-3 rounded bg-acmSurface text-center text-xs text-acmBone">
           Application received for editorial review.
         </div>
       </div>
@@ -341,98 +350,95 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL: ARTICLE CREATOR STUDIO (PASSCODE UNLOCKED) ==================== -->
   <div id="studioModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm hidden flex items-center justify-center p-4 sm:p-6" onclick="handleModalBackdropClick(event, 'studioModal')">
-    <div class="relative w-full max-w-2xl bg-panel rounded-xl border border-white/20 p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto">
+    <div class="relative w-full max-w-2xl bg-acmPanel rounded-xl border border-acmBorder p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto">
       
-      <button onclick="closeStudioModal()" class="absolute top-4 right-4 text-white/60 hover:text-white">
+      <button onclick="closeStudioModal()" class="absolute top-4 right-4 text-acmMuted hover:text-acmBone">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
-      <h3 class="font-serif-italic text-2xl font-bold text-white">Publish Article</h3>
+      <h3 class="font-serif-italic text-2xl font-bold text-acmBone">Publish Article</h3>
 
       <form onsubmit="handlePublishArticle(event)" class="space-y-3 font-mono-italic text-xs">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label class="block text-white/70 mb-1">Title *</label>
-            <input type="text" id="newArticleTitle" required placeholder="Article title" class="w-full px-3 py-2 rounded bg-surface border border-white/10 text-white focus:border-white focus:outline-none" />
+            <label class="block text-acmMuted mb-1">Title *</label>
+            <input type="text" id="newArticleTitle" required placeholder="Article title" class="w-full px-3 py-2 rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none" />
           </div>
           <div>
-            <label class="block text-white/70 mb-1">Tag / Category *</label>
-            <input type="text" id="newArticleTag" required placeholder="Complications, Analysis, etc." class="w-full px-3 py-2 rounded bg-surface border border-white/10 text-white focus:border-white focus:outline-none" />
+            <label class="block text-acmMuted mb-1">Tag / Category *</label>
+            <input type="text" id="newArticleTag" required placeholder="Complications, Analysis, etc." class="w-full px-3 py-2 rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none" />
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label class="block text-white/70 mb-1">Author *</label>
-            <input type="text" id="newArticleAuthor" required value="AVRAMO Editorial" class="w-full px-3 py-2 rounded bg-surface border border-white/10 text-white focus:border-white focus:outline-none" />
+            <label class="block text-acmMuted mb-1">Author *</label>
+            <input type="text" id="newArticleAuthor" required value="AVRAMO Editorial" class="w-full px-3 py-2 rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none" />
           </div>
           <div>
-            <label class="block text-white/70 mb-1">Image URL (Optional)</label>
-            <input type="url" id="newArticleImage" placeholder="https://..." class="w-full px-3 py-2 rounded bg-surface border border-white/10 text-white focus:border-white focus:outline-none" />
+            <label class="block text-acmMuted mb-1">Image URL (Optional)</label>
+            <input type="url" id="newArticleImage" placeholder="https://..." class="w-full px-3 py-2 rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none" />
           </div>
         </div>
 
         <div>
-          <label class="block text-white/70 mb-1">Excerpt *</label>
-          <input type="text" id="newArticleExcerpt" required placeholder="Short summary" class="w-full px-3 py-2 rounded bg-surface border border-white/10 text-white focus:border-white focus:outline-none" />
+          <label class="block text-acmMuted mb-1">Excerpt *</label>
+          <input type="text" id="newArticleExcerpt" required placeholder="Short summary" class="w-full px-3 py-2 rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none" />
         </div>
 
         <div>
-          <label class="block text-white/70 mb-1">Full Article *</label>
-          <textarea id="newArticleBody" rows="7" required placeholder="Write article content here..." class="w-full px-3 py-2 rounded bg-surface border border-white/10 text-white focus:border-white focus:outline-none leading-relaxed"></textarea>
+          <label class="block text-acmMuted mb-1">Full Article *</label>
+          <textarea id="newArticleBody" rows="7" required placeholder="Write article content here..." class="w-full px-3 py-2 rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none leading-relaxed"></textarea>
         </div>
 
-        <button type="submit" class="w-full py-3 rounded bg-white text-obsidian font-bold uppercase hover:bg-neutral-200 transition-colors">
-          Publish to Site
+        <button type="submit" class="w-full py-3 rounded bg-acmBone text-acmBase font-bold uppercase hover:bg-[#E2DDD3] transition-colors">
+          Publish to Journal
         </button>
       </form>
 
     </div>
   </div>
 
-  <!-- ==================== MODAL: CURATOR ACCESS PIN ==================== -->
   <div id="pinModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'pinModal')">
-    <div class="relative w-full max-w-xs bg-panel rounded-xl border border-white/20 p-6 space-y-4 text-center">
-      <button onclick="closePinModal()" class="absolute top-4 right-4 text-white/60 hover:text-white">
+    <div class="relative w-full max-w-xs bg-acmPanel rounded-xl border border-acmBorder p-6 space-y-4 text-center">
+      <button onclick="closePinModal()" class="absolute top-4 right-4 text-acmMuted hover:text-acmBone">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
-      <h3 class="font-serif-italic text-lg font-bold text-white">Curator Vault</h3>
+      <h3 class="font-serif-italic text-lg font-bold text-acmBone">Curator Vault</h3>
 
       <form onsubmit="verifyPin(event)" class="space-y-3 font-mono-italic text-xs">
         <input 
           type="password" 
           id="pinInput" 
           placeholder="Passcode..." 
-          class="w-full px-3 py-2 text-center tracking-widest rounded bg-surface border border-white/20 text-white focus:border-white focus:outline-none"
+          class="w-full px-3 py-2 text-center tracking-widest rounded bg-acmSurface border border-acmBorder text-acmBone focus:border-acmBone focus:outline-none"
           autofocus
         />
-        <div id="pinError" class="text-white/60 text-[11px] hidden">Incorrect passcode</div>
-        <button type="submit" class="w-full py-2 rounded bg-white text-obsidian font-bold hover:bg-neutral-200 transition-colors">
+        <div id="pinError" class="text-red-400 text-[11px] hidden">Incorrect passcode</div>
+        <button type="submit" class="w-full py-2 rounded bg-acmBone text-acmBase font-bold hover:bg-[#E2DDD3] transition-colors">
           Unlock
         </button>
       </form>
     </div>
   </div>
 
-  <!-- ==================== MODAL: CURATOR DASHBOARD ==================== -->
   <div id="vaultModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm hidden flex items-center justify-center p-4 sm:p-6" onclick="handleModalBackdropClick(event, 'vaultModal')">
-    <div class="relative w-full max-w-3xl bg-panel rounded-xl border border-white/20 flex flex-col max-h-[90vh] overflow-hidden">
+    <div class="relative w-full max-w-3xl bg-acmPanel rounded-xl border border-acmBorder flex flex-col max-h-[90vh] overflow-hidden">
       
-      <div class="p-5 border-b border-white/10 flex items-center justify-between">
-        <h3 class="font-serif-italic text-lg font-bold text-white">Curator Vault</h3>
-        <button onclick="closeVaultModal()" class="w-8 h-8 rounded-full bg-surface text-white/60 hover:text-white flex items-center justify-center">
+      <div class="p-5 border-b border-acmBorder flex items-center justify-between">
+        <h3 class="font-serif-italic text-lg font-bold text-acmBone">Curator Vault</h3>
+        <button onclick="closeVaultModal()" class="w-8 h-8 rounded-full bg-acmSurface text-acmMuted hover:text-acmBone flex items-center justify-center">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
 
-      <div class="flex border-b border-white/10 bg-surface/40 px-6 pt-3 gap-6 font-mono-italic text-xs">
-        <button id="vaultTabWatchBtn" onclick="switchVaultTab('watches')" class="pb-2 border-b-2 border-white text-white font-bold">
+      <div class="flex border-b border-acmBorder bg-acmSurface px-6 pt-3 gap-6 font-mono-italic text-xs">
+        <button id="vaultTabWatchBtn" onclick="switchVaultTab('watches')" class="pb-2 border-b-2 border-acmBone text-acmBone font-bold">
           Watch Suggestions (<span id="vaultWatchCount">0</span>)
         </button>
-        <button id="vaultTabWritersBtn" onclick="switchVaultTab('writers')" class="pb-2 border-b-2 border-transparent text-white/60 hover:text-white">
+        <button id="vaultTabWritersBtn" onclick="switchVaultTab('writers')" class="pb-2 border-b-2 border-transparent text-acmMuted hover:text-acmBone">
           Writer Applications (<span id="vaultWriterCount">0</span>)
         </button>
       </div>
@@ -441,18 +447,20 @@
     </div>
   </div>
 
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="border-t border-white/10 py-8 font-mono-italic text-xs text-white/50">
+  <footer class="border-t border-acmBorder py-8 font-mono-italic text-xs text-acmFaint">
     <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
-      <span>AVRAMO</span>
-      <button onclick="openPinModal()" class="hover:text-white transition-colors cursor-pointer flex items-center gap-1">
+      <div class="flex items-center gap-2">
+        <span class="text-acmMuted">AVRAMO</span>
+        <span>•</span>
+        <span>Curated Archive © 2026</span>
+      </div>
+      <button onclick="openPinModal()" class="hover:text-acmBone transition-colors cursor-pointer flex items-center gap-1">
         <i data-lucide="lock" class="w-3 h-3"></i>
         <span>Curator</span>
       </button>
     </div>
   </footer>
 
-  <!-- ==================== SCRIPTS ==================== -->
   <script>
     const ACCESS_PIN = "613";
     let currentCurrency = "USD";
@@ -475,6 +483,7 @@
         availability: "Available (Made to Order)",
         isAvailable: true,
         thumbnail: "https://i.ytimg.com/vi/ZGFUKtZpW0U/maxresdefault.jpg",
+        description: "A mechanical miniature roulette wheel with ceramic ball and flying tourbillon on the caseback.",
         specs: {
           diameter: "44.0 mm",
           thickness: "16.3 mm",
@@ -494,6 +503,7 @@
         availability: "Available (Boutique Order)",
         isAvailable: true,
         thumbnail: "https://i.ytimg.com/vi/UGEAk3CqJ2Y/maxresdefault.jpg",
+        description: "Poetic automaton featuring 12 blooming flower petals displaying hours via sequential mechanical opening.",
         specs: {
           diameter: "38.0 mm",
           thickness: "13.0 mm",
@@ -513,6 +523,7 @@
         availability: "Sold Out (50 Pieces)",
         isAvailable: false,
         thumbnail: "https://i.ytimg.com/vi/mFlK6dQRHn0/maxresdefault.jpg",
+        description: "A pure black DLC satire featuring a Vantablack carbon nanotube dial absorbing 99.965% of light.",
         specs: {
           diameter: "38.2 mm x 44.0 mm",
           thickness: "10.5 mm",
@@ -531,7 +542,6 @@
         tag: "Mechanics",
         author: "AVRAMO Editorial",
         date: "Aug 2026",
-        image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80",
         excerpt: "Analyzing the kinetic energy requirements for jumping dial petals and secondary gear trains.",
         body: "High horology complications that drive full-dial animated sequences require unique power distribution architecture.\n\nIn watches like the Van Cleef & Arpels Heures Florales, the mechanical energy needed to open and close multiple floral modules simultaneously demands isolated spring power.\n\nWithout independent release governors, instant release cycles introduce substantial amplitude drops across the escapement, deteriorating overall chronometric performance."
       },
@@ -541,7 +551,6 @@
         tag: "Materials",
         author: "AVRAMO Editorial",
         date: "Aug 2026",
-        image: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=600&q=80",
         excerpt: "The assembly requirements and optical properties of nanotube dial structures.",
         body: "Vantablack absorbs 99.965% of visible light through microscopic vertically aligned carbon nanotube forests.\n\nFor manufacturers like H. Moser & Cie., cased within the Swiss Alp Watch Final Edition, assembly presents severe manufacturing challenges. The nanotube structures cannot withstand physical contact; even the lightest brush from a hand or mounting tool crushes the alignment and causes permanent reflectivity.\n\nEvery assembly step must be executed in cleanroom conditions, creating an uncompromising void effect."
       }
@@ -554,7 +563,7 @@
         const data = await res.json();
         if (data && data.rates) exchangeRates = { ...exchangeRates, ...data.rates };
       } catch (e) {}
-      renderGrid();
+      renderWatches();
     }
 
     function formatConvertedPrice(amount, fromCurr, targetCurr) {
@@ -572,51 +581,100 @@
 
     function handleCurrencyChange(newCurr) {
       currentCurrency = newCurr;
-      renderGrid();
+      renderWatches();
       if (activeModalItemId) updateModalPrice(activeModalItemId);
     }
 
-    // Render Watches
-    function renderGrid() {
-      const grid = document.getElementById('shortsGrid');
-      grid.innerHTML = shortsCatalog.map(item => {
-        const formattedPrice = formatConvertedPrice(item.baseAmount, item.baseCurrency, currentCurrency);
-        const availabilityBadge = item.isAvailable 
-          ? `<span class="text-white font-bold">● Available</span>` 
-          : `<span class="text-white/50">○ Sold Out</span>`;
+    // Render Editorial Magazine Watches
+    function renderWatches() {
+      const lead = shortsCatalog[0];
+      const secondary = shortsCatalog.slice(1);
+
+      // Render Lead Centerpiece Spread
+      const leadPrice = formatConvertedPrice(lead.baseAmount, lead.baseCurrency, currentCurrency);
+      const leadBadge = lead.isAvailable 
+        ? `<span class="text-acmBone font-bold">● Available</span>` 
+        : `<span class="text-acmMuted">○ Sold Out</span>`;
+
+      document.getElementById('centerpieceContainer').innerHTML = `
+        <div class="rounded-xl bg-acmPanel border border-acmBorder overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0 cursor-pointer" onclick="openShortsModal('${lead.id}')">
+          <div class="lg:col-span-7 relative aspect-[16/11] bg-black overflow-hidden group">
+            <img 
+              src="${lead.thumbnail}" 
+              alt="${lead.brand} ${lead.model}" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80';"
+            />
+            <div class="absolute inset-0 m-auto w-12 h-12 rounded-full bg-acmBase/80 border border-acmBorder flex items-center justify-center text-acmBone group-hover:bg-acmBone group-hover:text-acmBase transition-all">
+              <i data-lucide="play" class="w-5 h-5 fill-current ml-0.5"></i>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between space-y-6">
+            <div>
+              <div class="flex items-center justify-between text-[11px] font-mono-italic mb-2">
+                <span class="text-acmMuted uppercase">${lead.brand}</span>
+                ${leadBadge}
+              </div>
+              <h3 class="font-serif-italic text-2xl sm:text-3xl font-bold text-acmBone leading-tight">${lead.model}</h3>
+              <p class="text-acmMuted text-xs font-sansItalic mt-2 leading-relaxed">${lead.description}</p>
+              <div class="font-mono-italic text-sm text-acmBone font-bold mt-4">${leadPrice}</div>
+            </div>
+
+            <div class="space-y-2 font-mono-italic text-xs border-t border-acmBorder pt-4">
+              <div class="flex justify-between text-acmMuted"><span>Diameter</span><span class="text-acmBone">${lead.specs.diameter}</span></div>
+              <div class="flex justify-between text-acmMuted"><span>Thickness</span><span class="text-acmBone">${lead.specs.thickness}</span></div>
+              <div class="flex justify-between text-acmMuted"><span>Movement</span><span class="text-acmBone truncate max-w-[170px]">${lead.specs.movement}</span></div>
+              <div class="flex justify-between text-acmMuted"><span>Water Resistance</span><span class="text-acmBone">${lead.specs.waterResistance}</span></div>
+            </div>
+
+            <a href="${lead.productUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="py-2.5 rounded bg-acmSurface hover:bg-acmBone hover:text-acmBase text-acmBone text-xs font-mono-italic font-bold flex items-center justify-center gap-1.5 border border-acmBorder transition-colors">
+              <span>Manufacture Page</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+      `;
+
+      // Render Secondary Entries
+      document.getElementById('secondaryWatchesGrid').innerHTML = secondary.map(item => {
+        const itemPrice = formatConvertedPrice(item.baseAmount, item.baseCurrency, currentCurrency);
+        const itemBadge = item.isAvailable 
+          ? `<span class="text-acmBone font-bold">● Available</span>` 
+          : `<span class="text-acmMuted">○ Sold Out</span>`;
 
         return `
-          <div class="min-w-[270px] w-[80vw] max-w-[320px] shrink-0 snap-center md:min-w-0 md:w-full rounded-xl bg-panel border-subtle overflow-hidden flex flex-col cursor-pointer" onclick="openShortsModal('${item.id}')">
-            <div class="relative w-full aspect-[9/12] bg-black overflow-hidden group">
+          <div class="min-w-[280px] w-[80vw] max-w-[340px] shrink-0 snap-center md:min-w-0 md:w-full rounded-xl bg-acmPanel border border-acmBorder overflow-hidden flex flex-col cursor-pointer" onclick="openShortsModal('${item.id}')">
+            <div class="relative w-full aspect-[16/10] bg-black overflow-hidden group">
               <img 
                 src="${item.thumbnail}" 
                 alt="${item.brand} ${item.model}" 
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-90"
                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80';"
               />
-              <div class="absolute inset-0 m-auto w-10 h-10 rounded-full bg-obsidian/80 border border-white/30 flex items-center justify-center text-white group-hover:bg-white group-hover:text-obsidian transition-all">
+              <div class="absolute inset-0 m-auto w-10 h-10 rounded-full bg-acmBase/80 border border-acmBorder flex items-center justify-center text-acmBone group-hover:bg-acmBone group-hover:text-acmBase transition-all">
                 <i data-lucide="play" class="w-4 h-4 fill-current ml-0.5"></i>
               </div>
             </div>
             
-            <div class="p-4 flex-1 flex flex-col justify-between space-y-3 font-mono-italic text-xs">
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-4 font-mono-italic text-xs">
               <div>
                 <div class="flex items-center justify-between text-[10px] mb-1">
-                  <span class="text-white/60 uppercase">${item.brand}</span>
-                  ${availabilityBadge}
+                  <span class="text-acmMuted uppercase">${item.brand}</span>
+                  ${itemBadge}
                 </div>
-                <h3 class="font-serif-italic text-lg font-bold text-white">${item.model}</h3>
-                <span class="text-white font-bold block mt-1">${formattedPrice}</span>
+                <h4 class="font-serif-italic text-lg font-bold text-acmBone">${item.model}</h4>
+                <span class="text-acmBone font-bold block mt-1">${itemPrice}</span>
               </div>
 
-              <div class="grid grid-cols-2 gap-1.5 text-[11px] bg-surface p-2.5 rounded border border-white/5">
-                <div><span class="text-white/50 block text-[9px] uppercase">Diameter</span><span class="text-white">${item.specs.diameter}</span></div>
-                <div><span class="text-white/50 block text-[9px] uppercase">Thickness</span><span class="text-white">${item.specs.thickness}</span></div>
-                <div><span class="text-white/50 block text-[9px] uppercase">WR</span><span class="text-white">${item.specs.waterResistance}</span></div>
-                <div><span class="text-white/50 block text-[9px] uppercase">Price</span><span class="text-white truncate block">${formattedPrice.split('.')[0]}</span></div>
+              <div class="grid grid-cols-2 gap-1.5 text-[11px] bg-acmSurface p-2.5 rounded border border-acmBorder/50">
+                <div><span class="text-acmMuted block text-[9px] uppercase">Diameter</span><span class="text-acmBone">${item.specs.diameter}</span></div>
+                <div><span class="text-acmMuted block text-[9px] uppercase">Thickness</span><span class="text-acmBone">${item.specs.thickness}</span></div>
+                <div><span class="text-acmMuted block text-[9px] uppercase">WR</span><span class="text-acmBone">${item.specs.waterResistance}</span></div>
+                <div><span class="text-acmMuted block text-[9px] uppercase">Price</span><span class="text-acmBone truncate block">${itemPrice.split('.')[0]}</span></div>
               </div>
 
-              <a href="${item.productUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="py-2 rounded bg-surface hover:bg-white hover:text-obsidian text-white text-[11px] font-bold flex items-center justify-center gap-1.5 border border-white/10 transition-colors">
+              <a href="${item.productUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="py-2 rounded bg-acmSurface hover:bg-acmBone hover:text-acmBase text-acmBone text-[11px] font-bold flex items-center justify-center gap-1.5 border border-acmBorder transition-colors">
                 <span>Manufacture Page</span>
                 <i data-lucide="external-link" class="w-3 h-3"></i>
               </a>
@@ -624,6 +682,7 @@
           </div>
         `;
       }).join('');
+
       lucide.createIcons();
     }
 
@@ -651,25 +710,25 @@
       iframe.src = `https://www.youtube-nocookie.com/embed/${item.shortId}?autoplay=1&playsinline=1&modestbranding=1&rel=0`;
 
       document.getElementById('modalSpecsContainer').innerHTML = `
-        <div class="p-2 bg-surface rounded border border-white/5 flex justify-between">
-          <span class="text-white/50 uppercase text-[10px]">Diameter</span>
-          <span class="text-white font-bold">${item.specs.diameter}</span>
+        <div class="p-2 bg-acmSurface rounded border border-acmBorder/50 flex justify-between">
+          <span class="text-acmMuted uppercase text-[10px]">Diameter</span>
+          <span class="text-acmBone font-bold">${item.specs.diameter}</span>
         </div>
-        <div class="p-2 bg-surface rounded border border-white/5 flex justify-between">
-          <span class="text-white/50 uppercase text-[10px]">Thickness</span>
-          <span class="text-white font-bold">${item.specs.thickness}</span>
+        <div class="p-2 bg-acmSurface rounded border border-acmBorder/50 flex justify-between">
+          <span class="text-acmMuted uppercase text-[10px]">Thickness</span>
+          <span class="text-acmBone font-bold">${item.specs.thickness}</span>
         </div>
-        <div class="p-2 bg-surface rounded border border-white/5 flex justify-between">
-          <span class="text-white/50 uppercase text-[10px]">Movement</span>
-          <span class="text-white font-bold truncate max-w-[180px]">${item.specs.movement}</span>
+        <div class="p-2 bg-acmSurface rounded border border-acmBorder/50 flex justify-between">
+          <span class="text-acmMuted uppercase text-[10px]">Movement</span>
+          <span class="text-acmBone font-bold truncate max-w-[180px]">${item.specs.movement}</span>
         </div>
-        <div class="p-2 bg-surface rounded border border-white/5 flex justify-between">
-          <span class="text-white/50 uppercase text-[10px]">Water Resistance</span>
-          <span class="text-white font-bold">${item.specs.waterResistance}</span>
+        <div class="p-2 bg-acmSurface rounded border border-acmBorder/50 flex justify-between">
+          <span class="text-acmMuted uppercase text-[10px]">Water Resistance</span>
+          <span class="text-acmBone font-bold">${item.specs.waterResistance}</span>
         </div>
-        <div class="p-2 bg-surface rounded border border-white/5 flex justify-between">
-          <span class="text-white/50 uppercase text-[10px]">Case Material</span>
-          <span class="text-white font-bold">${item.specs.caseMaterial}</span>
+        <div class="p-2 bg-acmSurface rounded border border-acmBorder/50 flex justify-between">
+          <span class="text-acmMuted uppercase text-[10px]">Case Material</span>
+          <span class="text-acmBone font-bold">${item.specs.caseMaterial}</span>
         </div>
       `;
 
@@ -697,15 +756,15 @@
       const articles = getStoredArticles();
       const grid = document.getElementById('articlesGrid');
       grid.innerHTML = articles.map(art => `
-        <div class="rounded-xl bg-panel border-subtle p-5 sm:p-6 flex flex-col justify-between space-y-4 cursor-pointer" onclick="openArticleModal('${art.id}')">
+        <div class="rounded-xl bg-acmPanel border border-acmBorder p-6 sm:p-7 flex flex-col justify-between space-y-5 cursor-pointer" onclick="openArticleModal('${art.id}')">
           <div class="space-y-2">
-            <span class="font-mono-italic text-[10px] text-white/50 uppercase">${art.tag}</span>
-            <h3 class="font-serif-italic text-xl font-bold text-white">${art.title}</h3>
-            <p class="text-white/70 text-xs font-body leading-relaxed line-clamp-2">${art.excerpt}</p>
+            <span class="font-mono-italic text-[10px] text-acmMuted uppercase">${art.tag}</span>
+            <h3 class="font-serif-italic text-xl sm:text-2xl font-bold text-acmBone leading-snug">${art.title}</h3>
+            <p class="text-acmMuted text-xs sm:text-sm font-sansItalic leading-relaxed line-clamp-3">${art.excerpt}</p>
           </div>
-          <div class="flex items-center justify-between pt-3 border-t border-white/10 font-mono-italic text-[11px] text-white/50">
+          <div class="flex items-center justify-between pt-4 border-t border-acmBorder font-mono-italic text-[11px] text-acmMuted">
             <span>${art.author}</span>
-            <span class="text-white flex items-center gap-1 hover:underline">Read →</span>
+            <span class="text-acmBone flex items-center gap-1 hover:underline">Read Essay →</span>
           </div>
         </div>
       `).join('');
@@ -747,13 +806,13 @@
       const appContent = document.getElementById('applyTabContent');
 
       if (tab === 'curator') {
-        curBtn.className = "flex-1 py-1.5 rounded bg-white text-obsidian font-bold";
-        appBtn.className = "flex-1 py-1.5 rounded text-white/60 hover:text-white";
+        curBtn.className = "flex-1 py-1.5 rounded bg-acmBone text-acmBase font-bold";
+        appBtn.className = "flex-1 py-1.5 rounded text-acmMuted hover:text-acmBone";
         curContent.classList.remove('hidden');
         appContent.classList.add('hidden');
       } else {
-        appBtn.className = "flex-1 py-1.5 rounded bg-white text-obsidian font-bold";
-        curBtn.className = "flex-1 py-1.5 rounded text-white/60 hover:text-white";
+        appBtn.className = "flex-1 py-1.5 rounded bg-acmBone text-acmBase font-bold";
+        curBtn.className = "flex-1 py-1.5 rounded text-acmMuted hover:text-acmBone";
         appContent.classList.remove('hidden');
         curContent.classList.add('hidden');
       }
@@ -869,11 +928,11 @@
       const writerBtn = document.getElementById('vaultTabWritersBtn');
 
       if (tab === 'watches') {
-        watchBtn.className = "pb-2 border-b-2 border-white text-white font-bold";
-        writerBtn.className = "pb-2 border-b-2 border-transparent text-white/60 hover:text-white";
+        watchBtn.className = "pb-2 border-b-2 border-acmBone text-acmBone font-bold";
+        writerBtn.className = "pb-2 border-b-2 border-transparent text-acmMuted hover:text-acmBone";
       } else {
-        writerBtn.className = "pb-2 border-b-2 border-white text-white font-bold";
-        watchBtn.className = "pb-2 border-b-2 border-transparent text-white/60 hover:text-white";
+        writerBtn.className = "pb-2 border-b-2 border-acmBone text-acmBone font-bold";
+        watchBtn.className = "pb-2 border-b-2 border-transparent text-acmMuted hover:text-acmBone";
       }
       renderVaultContent();
     }
@@ -888,44 +947,44 @@
 
       if (currentVaultTab === 'watches') {
         if (watchList.length === 0) {
-          container.innerHTML = `<div class="text-center py-8 text-white/50">No watch suggestions yet.</div>`;
+          container.innerHTML = `<div class="text-center py-8 text-acmMuted">No watch suggestions yet.</div>`;
         } else {
           container.innerHTML = watchList.map(item => `
-            <div class="p-3.5 rounded bg-surface border border-white/5 space-y-2">
+            <div class="p-3.5 rounded bg-acmSurface border border-acmBorder/50 space-y-2">
               <div class="flex items-start justify-between">
                 <div>
-                  <span class="text-[10px] text-white/50 uppercase">${item.timestamp}</span>
-                  <h4 class="font-serif-italic text-base font-bold text-white">${item.watch}</h4>
+                  <span class="text-[10px] text-acmMuted uppercase">${item.timestamp}</span>
+                  <h4 class="font-serif-italic text-base font-bold text-acmBone">${item.watch}</h4>
                 </div>
-                <button onclick="deleteSubmission('${item.id}')" class="text-white/40 hover:text-white p-1">
+                <button onclick="deleteSubmission('${item.id}')" class="text-acmMuted hover:text-acmBone p-1">
                   <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
                 </button>
               </div>
-              <p class="text-white/80 text-xs">"${item.details}"</p>
-              <div class="text-[11px] text-white/50 pt-1 border-t border-white/5 flex justify-between">
+              <p class="text-acmBone text-xs">"${item.details}"</p>
+              <div class="text-[11px] text-acmMuted pt-1 border-t border-acmBorder/50 flex justify-between">
                 <span>${item.email}</span>
-                ${item.link ? `<a href="${item.link}" target="_blank" class="text-white underline">Link ↗</a>` : ''}
+                ${item.link ? `<a href="${item.link}" target="_blank" class="text-acmBone underline">Link ↗</a>` : ''}
               </div>
             </div>
           `).join('');
         }
       } else {
         if (writerList.length === 0) {
-          container.innerHTML = `<div class="text-center py-8 text-white/50">No writer applications yet.</div>`;
+          container.innerHTML = `<div class="text-center py-8 text-acmMuted">No writer applications yet.</div>`;
         } else {
           container.innerHTML = writerList.map(item => `
-            <div class="p-3.5 rounded bg-surface border border-white/5 space-y-2">
+            <div class="p-3.5 rounded bg-acmSurface border border-acmBorder/50 space-y-2">
               <div class="flex items-start justify-between">
                 <div>
-                  <span class="text-[10px] text-white/50 uppercase">${item.timestamp}</span>
-                  <h4 class="font-serif-italic text-base font-bold text-white">${item.name}</h4>
-                  <span class="text-[11px] text-white/60">${item.email}</span>
+                  <span class="text-[10px] text-acmMuted uppercase">${item.timestamp}</span>
+                  <h4 class="font-serif-italic text-base font-bold text-acmBone">${item.name}</h4>
+                  <span class="text-[11px] text-acmMuted">${item.email}</span>
                 </div>
-                <button onclick="deleteWriterApp('${item.id}')" class="text-white/40 hover:text-white p-1">
+                <button onclick="deleteWriterApp('${item.id}')" class="text-acmMuted hover:text-acmBone p-1">
                   <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
                 </button>
               </div>
-              <p class="text-white/80 text-xs whitespace-pre-line">${item.sample}</p>
+              <p class="text-acmBone text-xs whitespace-pre-line">${item.sample}</p>
             </div>
           `).join('');
         }
