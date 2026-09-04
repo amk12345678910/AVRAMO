@@ -1,1 +1,638 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AVRAMO</title>
+  <meta name="description" content="Detailed watch specifications, converted pricing, and early access by AVRAMO." />
 
+  <link rel="icon" type="image/png" href="https://unavatar.io/youtube/AVRAMO613" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            acmBase: '#FAF8F5',         // Crisp porcelain ivory
+            acmSectionWatches: '#F2ECE1',// Warm stone
+            acmDarkBlock: '#161412',     // Deep roasted espresso (High Contrast)
+            acmDarkText: '#FAF8F5',      // Warm bone for dark section
+            acmSectionSuggest: '#DDD2C0',// Saturated warm sand
+            acmInk: '#0A0908',           // Jet ink text
+            acmMuted: '#3E3A34',         // Readable dark neutral
+            acmFaint: '#696256',         // Secondary metadata
+            acmLine: '#0A0908',          // Solid contrast divider
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Inter"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { 
+      background-color: #FAF8F5; 
+      color: #0A0908; 
+      font-family: 'Inter', sans-serif;
+    }
+    .font-serif { font-family: 'Cormorant Garamond', serif; }
+    .font-mono { font-family: 'Space Grotesk', monospace; }
+    .border-contrast { border-color: rgba(10, 9, 8, 0.25); }
+    .border-contrast-strong { border-color: rgba(10, 9, 8, 0.7); }
+    select option { background-color: #FAF8F5; color: #0A0908; }
+  </style>
+</head>
+<body class="bg-acmBase text-acmInk antialiased selection:bg-acmInk selection:text-acmBase">
+
+  <header class="fixed top-0 left-0 right-0 z-40 bg-acmBase/95 backdrop-blur-md border-b border-contrast">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <a href="#" onclick="navigateTo('home'); return false;" class="flex items-center gap-3 group">
+        <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-acmInk">
+          <img 
+            src="https://unavatar.io/youtube/AVRAMO613" 
+            alt="AVRAMO" 
+            class="w-full h-full object-cover"
+            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=100&q=80';"
+          />
+        </div>
+        <span class="font-serif text-3xl font-bold tracking-wide text-acmInk">AVRAMO</span>
+      </a>
+
+      <nav class="flex items-center gap-8 font-mono text-xs text-acmInk font-semibold tracking-wider uppercase">
+        <a href="#watches" onclick="navigateTo('home');" class="hover:opacity-60 transition-opacity">Watches</a>
+        <a href="#about" onclick="navigateTo('home');" class="hover:opacity-60 transition-opacity">About</a>
+        <a href="#suggest" onclick="navigateTo('home');" class="hover:opacity-60 transition-opacity">Suggest</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <div id="homeView" class="pt-20 space-y-0">
+    
+    <section id="watches" class="bg-acmSectionWatches py-20 border-b border-contrast">
+      <div class="max-w-6xl mx-auto px-6 space-y-12">
+        
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b-2 border-acmInk pb-6">
+          <div>
+            <h1 class="font-serif text-4xl sm:text-5xl font-bold text-acmInk">Featured Watches</h1>
+            <p class="text-acmMuted text-xs sm:text-sm mt-1 font-sans font-medium">More detailed specifications.</p>
+          </div>
+
+          <div class="flex items-center gap-2 self-start sm:self-end">
+            <span class="font-mono text-xs text-acmInk font-bold uppercase tracking-wider">Currency:</span>
+            <select 
+              id="currencySelect" 
+              onchange="handleCurrencyChange(this.value)"
+              class="px-3 py-1.5 bg-transparent border-b-2 border-acmInk text-acmInk font-mono text-xs font-bold focus:outline-none transition-colors cursor-pointer"
+            >
+              <option value="USD">USD ($)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="CHF">CHF (Fr)</option>
+              <option value="GBP">GBP (£)</option>
+              <option value="JPY">JPY (¥)</option>
+              <option value="CAD">CAD ($)</option>
+              <option value="AUD">AUD ($)</option>
+              <option value="ILS">ILS (₪)</option>
+              <option value="AED">AED (د.إ)</option>
+              <option value="SGD">SGD ($)</option>
+              <option value="HKD">HKD ($)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="space-y-14" id="watchesGallery"></div>
+
+      </div>
+    </section>
+
+    <section id="about" class="bg-acmDarkBlock text-acmDarkText py-24 border-b border-acmInk">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-3xl space-y-6">
+          <span class="font-mono text-xs uppercase tracking-widest text-acmDarkText/60 font-semibold block">A Note From The Editor</span>
+          <p class="text-acmDarkText text-lg sm:text-xl leading-relaxed italic font-serif font-normal">
+            Hi, and welcome to the AVRAMO website! This site is my personal extension of the channel—here you’ll find more detailed specs, converted pricing, and early access to upcoming content. I’d love to have you involved by suggesting unique watches (or anything horological) for upcoming videos.
+          </p>
+          <div class="pt-2 font-mono text-xs text-acmDarkText/70 italic">
+            <span class="text-acmDarkText font-bold">Cheers, AVRAMO</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="suggest" class="bg-acmSectionSuggest py-24 border-b border-contrast">
+      <div class="max-w-2xl mx-auto px-6 space-y-8">
+        
+        <div class="space-y-2 border-b border-acmInk/30 pb-4">
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-acmInk">Suggest a Timepiece</h2>
+          <p class="text-acmMuted text-xs sm:text-sm font-sans font-medium">Have a watch with an unusual mechanical complication, dial, or architecture to cover next?</p>
+        </div>
+
+        <form id="ideaForm" onsubmit="handleIdeaSubmit(event)" class="space-y-6 font-mono text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="submitterEmail" class="block text-acmInk mb-1 font-bold uppercase tracking-wider text-[11px]">Your Email *</label>
+              <input 
+                type="email" 
+                id="submitterEmail" 
+                required 
+                placeholder="name@domain.com" 
+                class="w-full px-0 py-2 bg-transparent border-b-2 border-acmInk text-acmInk placeholder-acmFaint font-medium focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label for="watchName" class="block text-acmInk mb-1 font-bold uppercase tracking-wider text-[11px]">Brand & Model *</label>
+              <input 
+                type="text" 
+                id="watchName" 
+                required 
+                placeholder="e.g. Ludovic Ballouard Upside Down" 
+                class="w-full px-0 py-2 bg-transparent border-b-2 border-acmInk text-acmInk placeholder-acmFaint font-medium focus:outline-none"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="watchDetails" class="block text-acmInk mb-1 font-bold uppercase tracking-wider text-[11px]">What makes it mechanically notable? *</label>
+            <textarea 
+              id="watchDetails" 
+              rows="3" 
+              required 
+              placeholder="Explain the jumping mechanism, complication, or reason for coverage..." 
+              class="w-full px-0 py-2 bg-transparent border-b-2 border-acmInk text-acmInk placeholder-acmFaint focus:outline-none leading-relaxed font-sans text-xs font-medium"
+            ></textarea>
+          </div>
+
+          <div>
+            <label for="watchLink" class="block text-acmInk mb-1 font-bold uppercase tracking-wider text-[11px]">Reference URL (Optional)</label>
+            <input 
+              type="url" 
+              id="watchLink" 
+              placeholder="https://..." 
+              class="w-full px-0 py-2 bg-transparent border-b-2 border-acmInk text-acmInk placeholder-acmFaint font-medium focus:outline-none"
+            />
+          </div>
+
+          <button 
+            type="submit" 
+            id="submitBtn"
+            class="w-full py-4 bg-acmInk hover:bg-neutral-800 text-acmBase font-bold text-xs uppercase tracking-widest transition-colors cursor-pointer"
+          >
+            Send Suggestion
+          </button>
+        </form>
+
+        <div id="submissionConfirmation" class="hidden py-8 text-center space-y-2 border-2 border-acmInk bg-acmBase p-6">
+          <p class="text-acmInk text-lg font-serif font-bold">Suggestion received.</p>
+          <p class="text-acmMuted text-xs font-sans">It has been logged for upcoming video consideration.</p>
+          <button onclick="resetIdeaForm()" class="text-xs text-acmInk font-mono font-bold underline uppercase tracking-wider pt-2">Submit another timepiece</button>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <div id="watchView" class="hidden pt-28 pb-24 bg-acmBase">
+    <div class="max-w-6xl mx-auto px-6 space-y-12">
+      
+      <button onclick="navigateTo('home');" class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-acmInk font-bold hover:opacity-60 transition-opacity cursor-pointer">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        <span>Back to Featured Watches</span>
+      </button>
+
+      <div class="border-b-2 border-acmInk pb-8 space-y-3">
+        <div class="flex items-center justify-between">
+          <span id="detailBrand" class="font-mono text-xs uppercase tracking-widest text-acmMuted font-bold"></span>
+          <span id="detailAvailability" class="font-mono text-xs font-bold text-acmInk"></span>
+        </div>
+        <h1 id="detailTitle" class="font-serif text-4xl sm:text-6xl font-bold text-acmInk"></h1>
+        <div id="detailPrice" class="font-mono text-xl font-bold text-acmInk pt-1"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <div class="lg:col-span-5 bg-black border-2 border-acmInk overflow-hidden aspect-[9/16] w-full max-w-[380px] mx-auto shadow-2xl">
+          <iframe id="detailIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+        <div class="lg:col-span-7 space-y-8 font-mono text-xs">
+          <div class="space-y-3">
+            <h2 class="font-serif text-3xl font-bold text-acmInk">Detailed Specifications</h2>
+            <p id="detailDescription" class="font-sans text-sm text-acmMuted font-medium leading-relaxed"></p>
+          </div>
+
+          <div class="border-t-2 border-acmInk divide-y divide-acmInk/20 font-medium">
+            <div class="py-3.5 flex justify-between">
+              <span class="text-acmFaint uppercase">Diameter</span>
+              <span id="specDiameter" class="text-acmInk font-bold"></span>
+            </div>
+            <div class="py-3.5 flex justify-between">
+              <span class="text-acmFaint uppercase">Thickness</span>
+              <span id="specThickness" class="text-acmInk font-bold"></span>
+            </div>
+            <div class="py-3.5 flex justify-between">
+              <span class="text-acmFaint uppercase">Movement / Caliber</span>
+              <span id="specMovement" class="text-acmInk font-bold text-right max-w-[280px]"></span>
+            </div>
+            <div class="py-3.5 flex justify-between">
+              <span class="text-acmFaint uppercase">Water Resistance</span>
+              <span id="specWR" class="text-acmInk font-bold"></span>
+            </div>
+            <div class="py-3.5 flex justify-between">
+              <span class="text-acmFaint uppercase">Case Material</span>
+              <span id="specMaterial" class="text-acmInk font-bold text-right max-w-[280px]"></span>
+            </div>
+          </div>
+
+          <div class="pt-6">
+            <a id="detailManufactureLink" href="#" target="_blank" rel="noopener noreferrer" class="py-4 px-8 bg-acmInk hover:bg-neutral-800 text-acmBase font-mono text-xs font-bold uppercase tracking-widest inline-flex items-center gap-2 transition-colors">
+              <span>Official Manufacture Product Page</span>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div id="pinModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="handleModalBackdropClick(event, 'pinModal')">
+    <div class="relative w-full max-w-xs bg-acmBase border-2 border-acmInk p-6 space-y-4 text-center shadow-2xl">
+      <button onclick="closePinModal()" class="absolute top-4 right-4 text-acmMuted hover:text-acmInk">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <h3 class="font-serif text-2xl font-bold text-acmInk">Curator Access</h3>
+
+      <form onsubmit="verifyPin(event)" class="space-y-4 font-mono text-xs">
+        <input 
+          type="password" 
+          id="pinInput" 
+          placeholder="Passcode..." 
+          class="w-full px-0 py-2 text-center tracking-widest bg-transparent border-b-2 border-acmInk text-acmInk font-bold focus:outline-none"
+          autofocus
+        />
+        <div id="pinError" class="text-red-700 text-xs hidden font-bold">Incorrect passcode</div>
+        <button type="submit" class="w-full py-2.5 bg-acmInk text-acmBase font-bold uppercase tracking-wider hover:bg-neutral-800 transition-colors">
+          Unlock
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div id="vaultModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4 sm:p-6" onclick="handleModalBackdropClick(event, 'vaultModal')">
+    <div class="relative w-full max-w-3xl bg-acmBase border-2 border-acmInk flex flex-col max-h-[90vh] overflow-hidden shadow-2xl">
+      
+      <div class="p-6 border-b-2 border-acmInk flex items-center justify-between bg-acmSectionWatches">
+        <div>
+          <h3 class="font-serif text-2xl font-bold text-acmInk">Watch Suggestions</h3>
+          <span id="vaultWatchCount" class="font-mono text-xs text-acmMuted font-bold">0 Logged Submissions</span>
+        </div>
+        <button onclick="closeVaultModal()" class="w-8 h-8 text-acmMuted hover:text-acmInk flex items-center justify-center">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div id="vaultSubmissionsList" class="p-6 overflow-y-auto space-y-4 flex-1 font-mono text-xs"></div>
+    </div>
+  </div>
+
+  <footer class="border-t-2 border-acmInk py-8 font-mono text-xs text-acmInk bg-acmBase">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-acmInk font-bold">AVRAMO</span>
+        <span>•</span>
+        <span class="text-acmMuted">2026</span>
+      </div>
+      <button onclick="openPinModal()" class="hover:opacity-60 transition-opacity cursor-pointer flex items-center gap-1 uppercase tracking-wider font-bold">
+        <i data-lucide="lock" class="w-3 h-3"></i>
+        <span>Curator</span>
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    const ACCESS_PIN = "613";
+    let currentCurrency = "USD";
+    let currentWatchId = null;
+
+    let exchangeRates = {
+      USD: 1, EUR: 0.92, CHF: 0.88, GBP: 0.79, JPY: 154.5,
+      CAD: 1.37, AUD: 1.52, ILS: 3.70, AED: 3.67, SGD: 1.34, HKD: 7.82
+    };
+
+    const shortsCatalog = [
+      {
+        id: "jacob-casino",
+        shortId: "ZGFUKtZpW0U",
+        brand: "Jacob & Co.",
+        model: "Casino Tourbillon",
+        baseAmount: 300000,
+        baseCurrency: "USD",
+        availability: "Available (Made to Order)",
+        isAvailable: true,
+        thumbnail: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1400&q=80",
+        description: "A mechanical miniature roulette wheel with ceramic ball, actuated by an 8 o'clock pusher, with a flying tourbillon exposed through the caseback.",
+        specs: {
+          diameter: "44.0 mm",
+          thickness: "16.3 mm",
+          movement: "Caliber JCAM51 Manual-Wind (Flying Tourbillon)",
+          waterResistance: "30 Meters (3 bar)",
+          caseMaterial: "18K Rose Gold / Onyx Dial / Ceramic Ball"
+        },
+        productUrl: "https://jacobandco.com/timepieces/casino-tourbillon"
+      },
+      {
+        id: "vancleef-heures-florales",
+        shortId: "UGEAk3CqJ2Y",
+        brand: "Van Cleef & Arpels",
+        model: "Lady Arpels Heures Florales",
+        baseAmount: 290000,
+        baseCurrency: "EUR",
+        availability: "Available (Boutique Order)",
+        isAvailable: true,
+        thumbnail: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=1400&q=80",
+        description: "Poetic complication featuring 12 blooming flower petals displaying the current hour through spontaneous mechanical opening sequences.",
+        specs: {
+          diameter: "38.0 mm",
+          thickness: "13.0 mm",
+          movement: "Automatic Mechanical with Flower Automaton Module",
+          waterResistance: "30 Meters (3 bar)",
+          caseMaterial: "18K Rose Gold / Diamonds & Miniature Painting"
+        },
+        productUrl: "https://www.vancleefarpels.com/en/collections/watches/poetic-complications/vcarpbjm00---lady-arpels-heures-florales-cerisier-watch.html"
+      },
+      {
+        id: "moser-swiss-alp",
+        shortId: "mFlK6dQRHn0",
+        brand: "H. Moser & Cie.",
+        model: "Swiss Alp Watch Final Edition",
+        baseAmount: 30000,
+        baseCurrency: "CHF",
+        availability: "Sold Out (50 Pieces)",
+        isAvailable: false,
+        thumbnail: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1400&q=80",
+        description: "A mechanical satire crafted in black DLC steel, paired with an ultra-absorbent Vantablack carbon nanotube dial that absorbs 99.965% of incident light.",
+        specs: {
+          diameter: "38.2 mm x 44.0 mm",
+          thickness: "10.5 mm",
+          movement: "Caliber HMC 324 Hand-Wound (~100h Reserve)",
+          waterResistance: "30 Meters (3 bar)",
+          caseMaterial: "Black DLC Steel / Vantablack Dial"
+        },
+        productUrl: "https://h-moser.com/en/the-chronicles/watches/all-about-the-swiss-alp-final-upgrade"
+      }
+    ];
+
+    // Currency Rates Engine
+    async function initExchangeRates() {
+      try {
+        const res = await fetch('https://open.er-api.com/v6/latest/USD');
+        const data = await res.json();
+        if (data && data.rates) exchangeRates = { ...exchangeRates, ...data.rates };
+      } catch (e) {}
+      renderGallery();
+      if (currentWatchId) renderWatchPage(currentWatchId);
+    }
+
+    function formatConvertedPrice(amount, fromCurr, targetCurr) {
+      const fromRate = exchangeRates[fromCurr] || 1;
+      const targetRate = exchangeRates[targetCurr] || 1;
+      const inUSD = amount / fromRate;
+      const converted = inUSD * targetRate;
+
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: targetCurr,
+        maximumFractionDigits: 0
+      }).format(converted);
+    }
+
+    function handleCurrencyChange(newCurr) {
+      currentCurrency = newCurr;
+      renderGallery();
+      if (currentWatchId) renderWatchPage(currentWatchId);
+    }
+
+    // Render Layered Cards (A Collected Man Layout with High Contrast)
+    function renderGallery() {
+      const container = document.getElementById('watchesGallery');
+      container.innerHTML = shortsCatalog.map(item => {
+        const price = formatConvertedPrice(item.baseAmount, item.baseCurrency, currentCurrency);
+        const availability = item.isAvailable 
+          ? `<span class="text-white font-bold">● Available</span>` 
+          : `<span class="text-white/70">○ Sold Out</span>`;
+
+        return `
+          <div 
+            onclick="navigateToWatch('${item.id}')"
+            class="relative w-full aspect-[16/9] sm:aspect-[21/9] bg-black border-2 border-acmInk overflow-hidden group cursor-pointer shadow-xl"
+          >
+            <img 
+              src="${item.thumbnail}" 
+              alt="${item.brand} ${item.model}" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1400&q=80';"
+            />
+
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+
+            <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+              <div class="space-y-1">
+                <span class="font-mono text-xs uppercase tracking-widest text-white/80 font-bold block">${item.brand}</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-wide">${item.model}</h2>
+                <div class="font-mono text-xs text-white pt-1 flex items-center gap-3">
+                  <span class="font-bold">${price}</span>
+                  <span>•</span>
+                  <span>${availability}</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white font-bold border-b-2 border-white pb-0.5 self-start sm:self-auto group-hover:translate-x-1 transition-transform">
+                <span>View Dedicated Dossier</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    // Single-Page Dedicated Watch Routing
+    function navigateToWatch(id) {
+      window.location.hash = `watch-${id}`;
+    }
+
+    function navigateTo(view) {
+      if (view === 'home') {
+        window.location.hash = '';
+      }
+    }
+
+    function renderWatchPage(id) {
+      const item = shortsCatalog.find(w => w.id === id);
+      if (!item) return;
+
+      currentWatchId = id;
+      const formattedPrice = formatConvertedPrice(item.baseAmount, item.baseCurrency, currentCurrency);
+
+      document.getElementById('detailBrand').innerText = item.brand;
+      document.getElementById('detailTitle').innerText = item.model;
+      document.getElementById('detailPrice').innerText = `Retail Reference: ${formattedPrice}`;
+      document.getElementById('detailAvailability').innerText = item.availability;
+      document.getElementById('detailDescription').innerText = item.description;
+
+      document.getElementById('specDiameter').innerText = item.specs.diameter;
+      document.getElementById('specThickness').innerText = item.specs.thickness;
+      document.getElementById('specMovement').innerText = item.specs.movement;
+      document.getElementById('specWR').innerText = item.specs.waterResistance;
+      document.getElementById('specMaterial').innerText = item.specs.caseMaterial;
+
+      document.getElementById('detailManufactureLink').href = item.productUrl;
+      document.getElementById('detailIframe').src = `https://www.youtube-nocookie.com/embed/${item.shortId}?autoplay=0&playsinline=1&modestbranding=1&rel=0`;
+
+      document.getElementById('homeView').classList.add('hidden');
+      document.getElementById('watchView').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      lucide.createIcons();
+    }
+
+    function handleHashRouting() {
+      const hash = window.location.hash;
+      if (hash.startsWith('#watch-')) {
+        const id = hash.replace('#watch-', '');
+        renderWatchPage(id);
+      } else {
+        currentWatchId = null;
+        document.getElementById('watchView').classList.add('hidden');
+        document.getElementById('homeView').classList.remove('hidden');
+        document.getElementById('detailIframe').src = '';
+      }
+    }
+
+    window.addEventListener('hashchange', handleHashRouting);
+
+    // Suggestion Form
+    function handleIdeaSubmit(e) {
+      e.preventDefault();
+      const list = JSON.parse(localStorage.getItem('avramo_submissions') || '[]');
+      list.unshift({
+        id: Date.now().toString(),
+        timestamp: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+        email: document.getElementById('submitterEmail').value,
+        watch: document.getElementById('watchName').value,
+        details: document.getElementById('watchDetails').value,
+        link: document.getElementById('watchLink').value || ''
+      });
+      localStorage.setItem('avramo_submissions', JSON.stringify(list));
+      document.getElementById('ideaForm').reset();
+      document.getElementById('ideaForm').classList.add('hidden');
+      document.getElementById('submissionConfirmation').classList.remove('hidden');
+    }
+
+    function resetIdeaForm() {
+      document.getElementById('submissionConfirmation').classList.add('hidden');
+      document.getElementById('ideaForm').classList.remove('hidden');
+    }
+
+    // Vault & Pin
+    function openPinModal() {
+      document.getElementById('pinInput').value = '';
+      document.getElementById('pinError').classList.add('hidden');
+      document.getElementById('pinModal').classList.remove('hidden');
+      setTimeout(() => document.getElementById('pinInput').focus(), 50);
+    }
+
+    function closePinModal() {
+      document.getElementById('pinModal').classList.add('hidden');
+    }
+
+    function verifyPin(e) {
+      e.preventDefault();
+      if (document.getElementById('pinInput').value.trim() === ACCESS_PIN) {
+        closePinModal();
+        openVaultModal();
+      } else {
+        document.getElementById('pinError').classList.remove('hidden');
+      }
+    }
+
+    function openVaultModal() {
+      const list = JSON.parse(localStorage.getItem('avramo_submissions') || '[]');
+      document.getElementById('vaultWatchCount').innerText = `${list.length} Logged Submissions`;
+      const container = document.getElementById('vaultSubmissionsList');
+
+      if (list.length === 0) {
+        container.innerHTML = `<div class="text-center py-8 text-acmMuted font-medium">No watch suggestions yet.</div>`;
+      } else {
+        container.innerHTML = list.map(item => `
+          <div class="py-4 border-b border-acmInk/20 space-y-2">
+            <div class="flex items-start justify-between">
+              <div>
+                <span class="text-xs text-acmMuted font-bold uppercase">${item.timestamp}</span>
+                <h4 class="font-serif text-2xl font-bold text-acmInk">${item.watch}</h4>
+              </div>
+              <button onclick="deleteSubmission('${item.id}')" class="text-acmMuted hover:text-acmInk p-1">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+            <p class="text-acmInk text-xs font-sans leading-relaxed font-medium">"${item.details}"</p>
+            <div class="text-xs text-acmMuted pt-1 flex justify-between font-mono font-bold">
+              <span>${item.email}</span>
+              ${item.link ? `<a href="${item.link}" target="_blank" class="text-acmInk underline">Link ↗</a>` : ''}
+            </div>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('vaultModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeVaultModal() {
+      document.getElementById('vaultModal').classList.add('hidden');
+    }
+
+    function deleteSubmission(id) {
+      let list = JSON.parse(localStorage.getItem('avramo_submissions') || '[]');
+      list = list.filter(i => i.id !== id);
+      localStorage.setItem('avramo_submissions', JSON.stringify(list));
+      openVaultModal();
+    }
+
+    function handleModalBackdropClick(e, modalId) {
+      if (e.target.id === modalId) {
+        if (modalId === 'pinModal') closePinModal();
+        if (modalId === 'vaultModal') closeVaultModal();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closePinModal();
+        closeVaultModal();
+      }
+    });
+
+    initExchangeRates();
+    handleHashRouting();
+  </script>
+</body>
+</html>
